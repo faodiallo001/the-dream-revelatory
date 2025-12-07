@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Dream Revelator – Interprétation spirituelle des rêves</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="The Dream Revelator – service d'interprétation spirituelle et profonde des rêves. Découvrez les messages cachés derrière vos rêves nocturnes."
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: rgba(10, 16, 35, 0.92);
+      --accent: #eab308;         /* or doux */
+      --accent-soft: rgba(234, 179, 8, 0.14);
+      --accent-strong: #facc15;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* --- Fond étoiles + halo lune --- */
+
+    .starfield,
+    .starfield::before,
+    .starfield::after {
+      content: "";
+      position: fixed;
+      inset: -50px;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(248, 250, 252, 0.9) 0, transparent 60%),
+        radial-gradient(1.5px 1.5px at 80% 10%, rgba(248, 250, 252, 0.4) 0, transparent 55%),
+        radial-gradient(1.2px 1.2px at 30% 80%, rgba(248, 250, 252, 0.6) 0, transparent 60%),
+        radial-gradient(1px 1px at 60% 50%, rgba(248, 250, 252, 0.55) 0, transparent 55%);
+      opacity: 0.45;
+      animation: twinkle 18s linear infinite alternate;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .starfield::before {
+      animation-duration: 26s;
+      opacity: 0.4;
+    }
+
+    .starfield::after {
+      animation-duration: 34s;
+      opacity: 0.3;
+    }
+
+    @keyframes twinkle {
+      0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.45; }
+      50% { transform: translate3d(-10px, -15px, 0) scale(1.03); opacity: 0.7; }
+      100% { transform: translate3d(10px, 10px, 0) scale(1); opacity: 0.4; }
+    }
+
+    .moon-glow {
+      position: fixed;
+      top: -160px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fef9c3 0, #facc15 25%, transparent 60%),
+        radial-gradient(circle at 60% 70%, rgba(250, 204, 21, 0.4) 0, transparent 65%);
+      box-shadow:
+        0 0 80px rgba(250, 204, 21, 0.75),
+        0 0 220px rgba(250, 250, 210, 0.5);
+      opacity: 0.9;
+      filter: blur(0.2px);
+      z-index: -2;
+    }
+
+    .moon-ring {
+      position: fixed;
+      top: -185px;
+      right: -85px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(252, 211, 77, 0.42);
+      box-shadow: 0 0 60px rgba(251, 191, 36, 0.35);
+      opacity: 0.6;
+      animation: moonPulse 10s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes moonPulse {
+      0% { transform: scale(1); opacity: 0.55; }
+      100% { transform: scale(1.08); opacity: 0.85; }
+    }
+
+    /* --- Layout global --- */
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fefce8 0, #facc15 30%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.4) 0, transparent 65%);
+      box-shadow:
+        0 0 30px rgba(250, 250, 210, 0.9),
+        0 0 60px rgba(37, 99, 235, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 36%;
+      border-radius: 50%;
+      border-top: 2px solid rgba(15, 23, 42, 0.22);
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      transform: rotate(-18deg);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 6px 8px;
+      border-radius: 999px;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-strong);
+      background: rgba(15, 23, 42, 0.88);
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      border: 1px solid rgba(250, 204, 21, 0.7);
+      padding: 7px 14px;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      background: radial-gradient(circle at 0 0, rgba(254, 249, 195, 0.12), transparent 55%);
+      box-shadow: 0 0 18px rgba(234, 179, 8, 0.35);
+    }
+
+    /* --- Hero --- */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 32px;
+      margin: 14px 0 36px;
+      align-items: center;
+    }
+
+    .hero-main {
+      padding: 22px 20px 24px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background:
+        radial-gradient(circle at top left, rgba(30, 64, 175, 0.7), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(6, 95, 70, 0.7), transparent 55%),
+        linear-gradient(to bottom right, rgba(15, 23, 42, 0.97), rgba(2, 6, 23, 0.96));
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      border: 1px solid transparent;
+      background:
+        radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.1), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(148, 163, 184, 0.18), transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .hero-pill {
+      font-size: 0.78rem;
+      color: var(--accent-strong);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(254, 249, 195, 0.5);
+      background: linear-gradient(
+        to right,
+        rgba(15, 23, 42, 0.7),
+        rgba(250, 250, 210, 0.08)
+      );
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .hero-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-strong);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.9);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      line-height: 1.16;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--accent-strong);
+      text-shadow: 0 0 24px rgba(250, 204, 21, 0.35);
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 28rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease,
+        border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      border-color: rgba(250, 204, 21, 0.9);
+      background: radial-gradient(circle at 0 0, #fef9c3 0, #facc15 26%, #ca8a04 80%);
+      color: #1b1505;
+      box-shadow:
+        0 12px 35px rgba(250, 204, 21, 0.45),
+        0 0 24px rgba(250, 249, 195, 0.6);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 18px 40px rgba(250, 204, 21, 0.6),
+        0 0 32px rgba(254, 240, 138, 0.85);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(209, 213, 219, 0.9);
+      color: #e5e7eb;
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.28), #020617);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-note strong {
+      color: #e5e7eb;
+    }
+
+    .hero-seal {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* --- Hero visual --- */
+
+    .hero-visual {
+      position: relative;
+      min-height: 260px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      background:
+        radial-gradient(circle at top, rgba(30, 64, 175, 0.9), transparent 60%),
+        radial-gradient(circle at bottom, rgba(6, 95, 70, 0.9), transparent 60%),
+        radial-gradient(circle at center, rgba(15, 23, 42, 1), rgba(2, 6, 23, 1));
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      padding: 18px 18px 20px;
+    }
+
+    .orbital-circle {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 1px dashed rgba(148, 163, 184, 0.3);
+      opacity: 0.7;
+    }
+
+    .orbital-circle:nth-child(2) {
+      inset: 34px;
+      opacity: 0.45;
+    }
+
+    .orbital-circle:nth-child(3) {
+      inset: 52px;
+      opacity: 0.28;
+    }
+
+    .orbital-moon {
+      position: absolute;
+      top: 32%;
+      right: 18%;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fef9c3 0, #facc15 40%, #b45309 100%);
+      box-shadow:
+        0 0 28px rgba(250, 250, 210, 0.82),
+        0 0 80px rgba(250, 204, 21, 0.85);
+    }
+
+    .orbital-moon::before {
+      content: "";
+      position: absolute;
+      inset: 22%;
+      border-radius: 50%;
+      border-top: 3px solid rgba(15, 23, 42, 0.35);
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      transform: rotate(-18deg);
+      opacity: 0.8;
+    }
+
+    .orbital-node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(248, 250, 252, 0.95);
+      box-shadow: 0 0 16px rgba(248, 250, 252, 0.95);
+    }
+
+    .orbital-node:nth-of-type(4) { top: 20%; left: 24%; }
+    .orbital-node:nth-of-type(5) { bottom: 22%; right: 22%; }
+    .orbital-node:nth-of-type(6) { bottom: 14%; left: 40%; }
+
+    .constellation-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        rgba(148, 163, 184, 0.1),
+        rgba(248, 250, 252, 0.7),
+        rgba(148, 163, 184, 0.05)
+      );
+      opacity: 0.9;
+    }
+
+    .constellation-line.one {
+      top: 24%;
+      left: 26%;
+      width: 44%;
+      transform: rotate(6deg);
+    }
+
+    .constellation-line.two {
+      bottom: 24%;
+      left: 32%;
+      width: 36%;
+      transform: rotate(-9deg);
+    }
+
+    .hero-quote {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      padding: 12px 13px;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.92);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-quote-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+    }
+
+    .hero-quote-text {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .hero-quote-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* --- Sections --- */
+
+    section {
+      margin-bottom: 38px;
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(30, 64, 175, 0.4);
+      background: radial-gradient(
+          circle at top left,
+          rgba(30, 64, 175, 0.55),
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(15, 23, 42, 0.96),
+          rgba(2, 6, 23, 0.98)
+        );
+      padding: 14px 14px 16px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.85);
+      font-size: 0.86rem;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+    }
+
+    .card-step {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(191, 219, 254, 0.95);
+      margin-bottom: 3px;
+    }
+
+    /* --- Formulaire --- */
+
+    .form-wrapper {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background:
+        radial-gradient(circle at 0 0, rgba(30, 64, 175, 0.75), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(6, 95, 70, 0.75), transparent 60%),
+        linear-gradient(to bottom right, #020617, #020617);
+      padding: 20px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 24px;
+    }
+
+    .form-wrapper h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .form-wrapper p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 0.82rem;
+      color: #e5e7eb;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text-main);
+      padding: 8px 10px;
+      font-size: 0.86rem;
+      outline: none;
+      transition: border-color 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.7);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(250, 204, 21, 0.9);
+      box-shadow:
+        0 0 0 1px rgba(250, 204, 21, 0.75),
+        0 0 22px rgba(250, 204, 21, 0.35);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .form-row-inline {
+      display: flex;
+      gap: 10px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin-top: 2px;
+    }
+
+    .form-footnote {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .btn-disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .form-side {
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.35), transparent 60%),
+        rgba(15, 23, 42, 0.96);
+      padding: 13px 14px 14px;
+      font-size: 0.83rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-side h4 {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .dot-gold {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-strong);
+      box-shadow: 0 0 14px rgba(250, 204, 21, 0.9);
+    }
+
+    /* --- FAQ --- */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 0.86rem;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+      padding: 10px 11px 11px;
+    }
+
+    .faq-item h3 {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .faq-item p {
+      color: var(--text-muted);
+    }
+
+    /* --- Legal --- */
+
+    .legal-section {
+      border-radius: 18px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at 0 0, rgba(30, 64, 175, 0.6), transparent 60%),
+        rgba(2, 6, 23, 0.96);
+      padding: 16px 15px 17px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .legal-section h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1rem;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .legal-section h4 {
+      margin-top: 6px;
+      margin-bottom: 2px;
+      font-size: 0.86rem;
+      color: #e5e7eb;
+    }
+
+    .legal-section p + p {
+      margin-top: 3px;
+    }
+
+    /* --- Footer --- */
+
+    footer {
+      padding-top: 8px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent-strong);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* --- Responsive --- */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-visual {
+        order: -1;
+      }
+      .form-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding-inline: 14px;
+      }
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .form-row-inline {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="starfield"></div>
+  <div class="moon-glow"></div>
+  <div class="moon-ring"></div>
+
+  <div class="page">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">
+          <div class="brand-name">The Dream Revelator</div>
+          <div class="brand-tagline">Révélations spirituelles des rêves</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#how">Comment ça marche</a>
+        <a href="#approach">Approche spirituelle</a>
+        <a href="#interpretation">Interpréter mon rêve</a>
+        <a href="#faq">FAQ</a>
+        <a href="#terms" class="nav-cta">Conditions &amp; confidentialité</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero">
+        <div class="hero-main">
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            Lecture spirituelle &amp; introspective
+          </div>
+          <h1 class="hero-title">
+            Vos rêves ne sont pas un hasard.<br />
+            <span>The Dream Revelator</span> en révèle le message.
+          </h1>
+          <p class="hero-subtitle">
+            Décrivez votre rêve. Recevez une interprétation spirituelle profonde :
+            symboles, avertissements, pistes de guérison intérieure. Un espace
+            intime pour écouter ce que la nuit essaie de vous dire.
+          </p>
+          <div class="hero-actions">
+            <a href="#interpretation" class="btn-primary">
+              Interpréter mon rêve
+              <span>↗</span>
+            </a>
+            <a href="#approach" class="btn-ghost">
+              Découvrir l'approche spirituelle
+            </a>
+          </div>
+          <div class="hero-note">
+            <span class="hero-seal">Confidentiel &amp; sans jugement</span>
+            <span>Les rêves sont anonymes, vos réponses restent entre vous et le message reçu.</span>
+          </div>
+        </div>
+
+        <aside class="hero-visual" aria-hidden="true">
+          <div class="orbital-circle"></div>
+          <div class="orbital-circle"></div>
+          <div class="orbital-circle"></div>
+          <div class="orbital-moon"></div>
+          <div class="orbital-node"></div>
+          <div class="orbital-node"></div>
+          <div class="orbital-node"></div>
+          <div class="constellation-line one"></div>
+          <div class="constellation-line two"></div>
+
+          <div class="hero-quote">
+            <div class="hero-quote-label">Exemple de révélation</div>
+            <div class="hero-quote-text">
+              « Rêver de faire ses besoins, ici, symbolise une libération d’un poids
+              intérieur et annonce souvent une entrée d’argent inattendue ou une
+              résolution matérielle qui se rapproche. »
+            </div>
+            <div class="hero-quote-meta">
+              Lecture issue d’un rêve nocturne anonyme, transformée en guidance.
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- How it works -->
+      <section id="how">
+        <div class="section-header">
+          <div class="section-kicker">Comment ça fonctionne</div>
+          <h2 class="section-title">De votre rêve à une révélation guidée</h2>
+          <p class="section-subtitle">
+            Le processus est simple, discret et conçu pour vous aider à entendre
+            ce que votre rêve tente de vous montrer, sans sensationnalisme ni
+            superstition superficielle.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-step">ÉTAPE 1</div>
+            <h3>Vous décrivez votre rêve</h3>
+            <p>
+              Racontez ce que vous avez vu, ressenti, les symboles qui vous ont marqué
+              (personnes, lieux, eau, animaux, chute, lumière, etc.).
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-step">ÉTAPE 2</div>
+            <h3>Nous lisons le symbole, pas la peur</h3>
+            <p>
+              La lecture s’inspire d’une symbolique spirituelle classique : purification,
+              avertissement, bénédiction, attachement, changement… sans entrer dans
+              l’astrologie ou la divination douteuse.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-step">ÉTAPE 3</div>
+            <h3>Vous recevez une révélation structurée</h3>
+            <p>
+              Vous obtenez une interprétation claire : sens spirituel, sens intérieur,
+              éventuel avertissement et piste de posture à adopter dans votre vie éveillée.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Spiritual approach -->
+      <section id="approach">
+        <div class="section-header">
+          <div class="section-kicker">Approche spirituelle</div>
+          <h2 class="section-title">Une lecture respectueuse de l'âme et du symbole</h2>
+          <p class="section-subtitle">
+            The Dream Revelator ne prétend pas prédire l’avenir. Les rêves y sont
+            considérés comme des miroirs symboliques : parfois apaisants, parfois
+            avertisseurs, toujours porteurs d’un message intérieur.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Pas d’astrologie, pas de culte des étoiles</h3>
+            <p>
+              Les interprétations se concentrent sur le symbole spirituel et moral :
+              purification, attachement, fardeau, bénédiction, épreuve, protection,
+              changement de voie.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Vous restez souverain(e)</h3>
+            <p>
+              Aucune lecture ne vous dicte une action extrême ou irréversible. Vous
+              êtes libre de recevoir, réfléchir, accepter ou rejeter ce qui résonne ou non.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Un espace intime, sans jugement</h3>
+            <p>
+              Votre rêve peut être étrange, troublant, honteux ou doux : il est accueilli
+              comme un langage symbolique, jamais comme une accusation ni une condamnation.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Dream interpretation form -->
+      <section id="interpretation">
+        <div class="section-header">
+          <div class="section-kicker">Interpréter mon rêve</div>
+          <h2 class="section-title">Décrivez votre rêve, recevez une lecture guidée</h2>
+          <p class="section-subtitle">
+            Ce formulaire est un exemple de la manière dont Dream Revelator pourra recueillir
+            vos rêves. Les envois sont ici désactivés en attendant la connexion au système
+            de traitement et au paiement.
+          </p>
+        </div>
+
+        <div class="form-wrapper">
+          <div>
+            <h3>Formulaire de rêve</h3>
+            <p>
+              Prenez votre temps. Plus votre description est sincère et précise, plus la
+              lecture pourra vous éclairer de manière fine.
+            </p>
+
+            <form>
+              <div class="form-row-inline">
+                <div style="flex: 1;">
+                  <label for="name">Prénom (optionnel)</label>
+                  <input id="name" type="text" name="name" placeholder="Vous pouvez rester anonyme" />
+                </div>
+                <div style="flex: 1;">
+                  <label for="email">E-mail (pour recevoir la lecture)</label>
+                  <input id="email" type="email" name="email" placeholder="exemple@domaine.com" />
+                </div>
+              </div>
+
+              <div>
+                <label for="mood">Au réveil, vous vous sentiez plutôt…</label>
+                <select id="mood" name="mood">
+                  <option value="">Sélectionnez une option</option>
+                  <option value="calm">Calme / apaisé(e)</option>
+                  <option value="fear">Anxieux(se) / effrayé(e)</option>
+                  <option value="sad">Triste / lourd(e)</option>
+                  <option value="joy">Heureux(se) / soulagé(e)</option>
+                  <option value="confused">Perdu(e) / confus(e)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="dream">Décrivez votre rêve</label>
+                <textarea
+                  id="dream"
+                  name="dream"
+                  placeholder="Qui était présent ? Quels lieux, objets, gestes, couleurs, animaux, chutes, eau, lumière… ?"
+                ></textarea>
+              </div>
+
+              <div>
+                <label for="context">Contexte de votre vie (optionnel)</label>
+                <textarea
+                  id="context"
+                  name="context"
+                  placeholder="Ce que vous vivez en ce moment : tensions, décisions, séparations, changements, peurs, prières…"
+                ></textarea>
+              </div>
+
+              <div class="checkbox-row">
+                <input id="consent" type="checkbox" />
+                <label for="consent">
+                  J’accepte que mon rêve soit utilisé de manière strictement confidentielle pour produire une interprétation
+                  personnalisée. Aucune donnée ne sera vendue ni partagée à des fins de publicité.
+                </label>
+              </div>
+
+              <button type="button" class="btn-primary btn-disabled">
+                Envoi désactivé (démo visuelle)
+              </button>
+              <div class="form-footnote">
+                L’envoi sera activé une fois la connexion au système de traitement et au module de paiement réalisée.
+              </div>
+            </form>
+          </div>
+
+          <aside class="form-side">
+            <div class="badge-soft">
+              <span class="dot-gold"></span>
+              Guidance, pas prédiction
+            </div>
+            <h4>Ce que vous recevrez plus tard</h4>
+            <p>
+              Une interprétation structurée autour de quatre axes : symbole principal,
+              message spirituel, message intérieur, et piste d’attitude concrète dans
+              votre vie éveillée.
+            </p>
+            <p>
+              The Dream Revelator ne remplace pas un professionnel de santé mentale,
+              un guide religieux ou un conseiller juridique. Il offre une lecture
+              symbolique et spirituelle, pas un diagnostic.
+            </p>
+            <p>
+              En cas de rêve très sombre (violence, désir de mort, danger réel), la
+              lecture encouragera toujours à chercher de l’aide humaine, pas à rester
+              seul(e) avec la charge émotionnelle.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="section-header">
+          <div class="section-kicker">Questions fréquentes</div>
+          <h2 class="section-title">Ce que Dream Revelator est — et n’est pas</h2>
+          <p class="section-subtitle">
+            Pour garder cet espace sain et utile, il est important de clarifier ce que
+            ce service propose réellement.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>Est-ce une forme de voyance ou de divination ?</h3>
+            <p>
+              Non. Le service ne prétend pas lire l’avenir ni communiquer avec des esprits.
+              Il propose une lecture symbolique et introspective de votre rêve à partir de
+              grandes grilles de lecture spirituelles et morales.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Mes rêves seront-ils utilisés publiquement ?</h3>
+            <p>
+              Non, pas sans anonymisation totale. Les rêves peuvent parfois inspirer des
+              exemples génériques, mais sans nom, ni détail permettant de vous identifier.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Est-ce une interprétation religieuse ?</h3>
+            <p>
+              L’approche se nourrit d’une tradition symbolique spirituelle (pureté, épreuve,
+              bénédiction, détachement…) sans mentionner ni imposer une religion précise.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Puis-je prendre des décisions graves après une lecture ?</h3>
+            <p>
+              Les lectures ne sont pas là pour vous pousser à des décisions radicales. En cas
+              d’enjeux importants (santé, sécurité, justice…), demandez toujours l’avis d’un
+              professionnel compétent.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Legal sections -->
+      <section id="terms" class="legal-section">
+        <h3>Conditions d’utilisation – The Dream Revelator</h3>
+        <p>
+          The Dream Revelator est un service de lecture symbolique et spirituelle des rêves.
+          En utilisant ce site, vous reconnaissez que les interprétations proposées ont une
+          vocation de guidance personnelle et de réflexion intérieure, et ne constituent ni
+          un avis médical, ni un conseil psychologique, juridique ou financier.
+        </p>
+
+        <h4>Usage responsable</h4>
+        <p>
+          Vous vous engagez à ne pas utiliser les contenus reçus pour justifier des actes de
+          violence, d’autodestruction, de haine ou de discrimination. Si un rêve réveille en
+          vous une détresse profonde ou des idées dangereuses, il est fortement recommandé
+          de consulter un professionnel qualifié (médecin, psychologue, autorité compétente).
+        </p>
+
+        <h4>Limitation de responsabilité</h4>
+        <p>
+          The Dream Revelator ne pourra être tenu responsable des décisions que vous prenez à
+          partir des lectures fournies. Les interprétations sont proposées comme un outil
+          d’introspection, pas comme une vérité absolue ni une injonction d’agir.
+        </p>
+
+        <h4>Évolution du service</h4>
+        <p>
+          Le contenu du site, les tarifs et le fonctionnement du service peuvent évoluer avec
+          le temps. Toute modification importante sera annoncée sur le site. En continuant
+          d’utiliser le service après ces changements, vous acceptez les nouvelles conditions.
+        </p>
+      </section>
+
+      <section id="privacy" class="legal-section">
+        <h3>Politique de confidentialité – Rêves &amp; données</h3>
+        <p>
+          Les rêves que vous partagez sont considérés comme sensibles. Même lorsqu’ils sont
+          anonymes, ils décrivent une part intime de votre vie. The Dream Revelator prend
+          cet aspect au sérieux.
+        </p>
+
+        <h4>Collecte minimale</h4>
+        <p>
+          Le service vise à collecter le minimum de données nécessaires : description des
+          rêves, ressenti, contexte éventuel et contact (par exemple votre e-mail) pour
+          vous envoyer la lecture. Vous pouvez choisir de rester anonyme au niveau du
+          prénom si vous le souhaitez.
+        </p>
+
+        <h4>Utilisation des données</h4>
+        <p>
+          Vos données sont utilisées uniquement pour produire et vous transmettre une
+          interprétation de rêve. Elles ne sont pas revendues à des tiers, ni exploitées
+          pour de la publicité ciblée extérieure au service.
+        </p>
+
+        <h4>Conservation &amp; suppression</h4>
+        <p>
+          Les rêves peuvent être conservés pendant une durée raisonnable pour améliorer la
+          qualité des lectures. Vous pouvez demander la suppression de vos données en
+          contactant l’équipe via l’adresse qui sera indiquée dans la version finale du site.
+        </p>
+
+        <h4>Sécurité</h4>
+        <p>
+          Des mesures techniques et organisationnelles raisonnables seront mises en place
+          pour limiter l’accès aux rêves et aux informations associées. Aucune technologie
+          n’étant infaillible, l’usage du service implique l’acceptation d’un risque
+          résiduel minimal.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div>© <span id="year"></span> The Dream Revelator. Tous droits réservés.</div>
+      <div class="footer-links">
+        <a href="#terms">Conditions d’utilisation</a>
+        <span>·</span>
+        <a href="#privacy">Politique de confidentialité</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mise à jour automatique de l'année
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
