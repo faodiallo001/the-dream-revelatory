@@ -17,23 +17,29 @@
 }
 
 /* Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY + FOND NUIT */
+/* ===========================
+   BODY + BACKGROUND
+   =========================== */
+
 body.tdr-body {
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   background: radial-gradient(circle at top, #1e293b 0%, #020617 45%, #000 100%);
   color: var(--tdr-text-main);
   overflow-x: hidden;
   position: relative;
 }
 
-/* ÉTOILES FINES ET NOMBREUSES */
+/* Ciel étoilé : mélange d'étoiles 1.2x1.2 et 2x2, avec scintillement léger */
+
 body.tdr-body::before {
   content: "";
   position: fixed;
@@ -41,53 +47,67 @@ body.tdr-body::before {
   pointer-events: none;
   z-index: -2;
   background:
-         radial-gradient(1px 1px at 12% 15%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 2px at 25% 22%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(2px 2px at 38% 65%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(2px 2px at 42% 45%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 2px at 55% 75%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(2px 2px at 65% 18%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(2px 2px at 72% 40%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 1px at 78% 83%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 32% 78%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 61% 15%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 92% 48%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 40% 90%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 28% 10%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 18% 88%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.2px 1.2px at 30% 50%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(0.8px 0.8px at 40% 10%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 50% 90%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(0.9px 0.9px at 70% 70%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.1px 1.1px at 90% 60%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(0.8px 0.8px at 75% 15%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 25% 30%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.3px 1.3px at 15% 65%, rgba(255,255,255,0.6), transparent);
-  opacity: 0.8;
-  animation: starTwinkle 8s infinite alternate ease-in-out;
+    /* petites étoiles 1.2x1.2 */
+    radial-gradient(1.2px 1.2px at 5% 15%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 42% 22%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 55% 12%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 65% 8%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.2px 1.2px at 80% 20%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 92% 18%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 10% 55%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 22% 60%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 36% 48%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 44% 65%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 58% 58%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 70% 52%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 82% 60%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 94% 55%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 12% 85%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 28% 88%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 40% 80%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 55% 90%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 70% 82%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 86% 88%, rgba(255, 255, 255, 0.7), transparent),
+
+    /* étoiles un peu plus grandes 2x2 */
+    radial-gradient(2px 2px at 15% 22%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 38% 30%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 62% 25%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 82% 35%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 25% 72%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 50% 68%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(2px 2px at 78% 75%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 35% 92%, rgba(255, 255, 255, 0.9), transparent);
+  opacity: 0.85;
+  animation: tdrStarTwinkle 8s infinite alternate ease-in-out;
 }
 
-@keyframes starTwinkle {
-  0% { opacity: 0.75; }
-  100% { opacity: 0.95; }
+/* scintillement très léger */
+@keyframes tdrStarTwinkle {
+  0% {
+    opacity: 0.75;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.95;
+    filter: blur(0.4px);
+  }
+  100% {
+    opacity: 0.8;
+    filter: blur(0px);
+  }
 }
 
-/* ORBITE FINE SUR LA DROITE */
+/* Orbite décorative sur le côté droit (subtile) */
+
 .tdr-orbit {
   position: fixed;
-  top: -300px;
-  right: -250px;
-  width: 800px;
-  height: 800px;
+  top: -320px;
+  right: -260px;
+  width: 780px;
+  height: 780px;
   border-radius: 50%;
   border: 1px solid rgba(148, 163, 184, 0.18);
   z-index: -1;
@@ -143,6 +163,7 @@ body.tdr-body::before {
 }
 
 /* Navigation */
+
 .tdr-nav {
   display: flex;
   gap: 14px;
@@ -174,7 +195,8 @@ body.tdr-body::before {
   padding: 14px 16px 50px;
 }
 
-/* HERO PLEIN ÉCRAN */
+/* HERO PLEIN ÉCRAN (HOME) */
+
 .tdr-main-hero {
   min-height: calc(100vh - 120px);
   display: flex;
@@ -183,17 +205,16 @@ body.tdr-body::before {
 }
 
 .tdr-hero {
-  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  justify-content: center;
   padding: 40px 0;
 }
 
 .tdr-hero-content {
   max-width: 520px;
+  text-align: left;
 }
 
 .tdr-hero-kicker {
@@ -235,10 +256,14 @@ body.tdr-body::before {
   color: var(--tdr-text-muted);
 }
 
+/* On supprime la grosse lune jaune à droite */
 
+.tdr-hero-moon {
+  display: none;
+}
 
 /* ===========================
-   LAYOUT 2 COLONNES (interpret)
+   LAYOUT 2 COLONNES (INTERPRET)
    =========================== */
 
 .tdr-main-two-col {
@@ -253,6 +278,7 @@ body.tdr-body::before {
 }
 
 /* Badges, titres, texte */
+
 .tdr-badge {
   display: inline-flex;
   align-items: center;
@@ -319,7 +345,7 @@ body.tdr-body::before {
 }
 
 /* ===========================
-   CARD + FORMULAIRE
+   CARD + FORMULAIRE (INTERPRET)
    =========================== */
 
 .tdr-card {
@@ -362,6 +388,7 @@ body.tdr-body::before {
 }
 
 /* Form */
+
 .tdr-form {
   display: flex;
   flex-direction: column;
@@ -412,7 +439,7 @@ body.tdr-body::before {
 
 .tdr-field input::placeholder,
 .tdr-field textarea::placeholder {
-  color: rgba(156,163,175,0.9);
+  color: rgba(156, 163, 175, 0.9);
   font-size: 0.8rem;
 }
 
@@ -424,6 +451,7 @@ body.tdr-body::before {
 }
 
 /* Checkbox */
+
 .tdr-checkbox-row {
   display: flex;
   gap: 8px;
@@ -435,7 +463,8 @@ body.tdr-body::before {
   margin-top: 3px;
 }
 
-/* Error */
+/* Erreur formulaire */
+
 .tdr-form-error {
   color: var(--tdr-danger);
   font-size: 0.78rem;
@@ -507,20 +536,12 @@ body.tdr-body::before {
    =========================== */
 
 @media (max-width: 900px) {
-  .tdr-hero {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .tdr-hero-moon {
-    align-self: center;
-    width: 210px;
-    height: 210px;
-    margin-top: 10px;
-  }
-
   .tdr-main-two-col {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tdr-main-hero {
+    min-height: calc(100vh - 150px);
   }
 }
 
@@ -534,8 +555,8 @@ body.tdr-body::before {
     flex-wrap: wrap;
   }
 
-  .tdr-main-hero {
-    min-height: calc(100vh - 160px);
+  .tdr-hero-content {
+    text-align: left;
   }
 
   .tdr-hero-title {
