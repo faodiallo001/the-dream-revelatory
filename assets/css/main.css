@@ -24,9 +24,15 @@
   box-sizing: border-box;
 }
 
-html, body {
+/* 👇 Ajouté juste pour éviter le flash blanc */
+
+html,
+body {
   height: 100%;
-  background-color: #020617 !important;
+}
+
+html {
+  background-color: #020617; /* fond sombre par défaut */
 }
 
 /* ===========================
@@ -36,20 +42,14 @@ html, body {
 body.tdr-body {
   min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  /* 🌙 Gradient fond SANS JAMAIS devenir blanc */
-  background-color: #020617 !important;
-  background-image: radial-gradient(circle at top, #1e293b 0%, #020617 45%, #000 100%) !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-
-  color: var(--tdr-text-main) !important;
+  background: radial-gradient(circle at top, #1e293b 0%, #020617 45%, #000 100%);
+  color: var(--tdr-text-main);
   overflow-x: hidden;
   position: relative;
 }
 
-/* ⭐ Ciel étoilé discret */
+/* 🌙 Ciel étoilé simplifié + stable (aucun blanchiment) */
+
 body.tdr-body::before {
   content: "";
   position: fixed;
@@ -64,14 +64,16 @@ body.tdr-body::before {
     radial-gradient(1.2px 1.2px at 44% 22%, rgba(255,255,255,0.55), transparent),
     radial-gradient(1.2px 1.2px at 62% 18%, rgba(255,255,255,0.45), transparent),
     radial-gradient(1.2px 1.2px at 82% 35%, rgba(255,255,255,0.55), transparent),
+
     radial-gradient(2px 2px at 25% 72%, rgba(255,255,255,0.65), transparent),
     radial-gradient(2px 2px at 50% 68%, rgba(255,255,255,0.65), transparent),
     radial-gradient(2px 2px at 78% 75%, rgba(255,255,255,0.65), transparent);
 
-  opacity: 0.18;
+  opacity: 0.22; /* ⭐ Stable, discret, jamais blanchissant */
 }
 
 /* Orbite décorative */
+
 .tdr-orbit {
   position: fixed;
   top: -320px;
@@ -205,7 +207,84 @@ body.tdr-body::before {
   gap: 8px;
 }
 
-/* BUTTON */
+.tdr-hero-note {
+  font-size: 0.78rem;
+  color: var(--tdr-text-muted);
+}
+
+/* ===========================
+   TWO COLUMN LAYOUT (INTERPRET)
+   =========================== */
+
+.tdr-main-two-col {
+  display: grid;
+  grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+  gap: 32px;
+}
+
+/* ===========================
+   CARD & FORM
+   =========================== */
+
+.tdr-card {
+  background: var(--tdr-card-bg);
+  padding: 20px;
+  border-radius: var(--tdr-radius-xl);
+  border: 1px solid var(--tdr-border-subtle);
+  box-shadow: var(--tdr-shadow);
+}
+
+.tdr-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tdr-card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.tdr-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--tdr-text-muted);
+}
+
+/* Form fields */
+
+.tdr-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tdr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tdr-field label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tdr-text-muted);
+}
+
+.tdr-field input,
+.tdr-field textarea {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  color: var(--tdr-text-main);
+  background: rgba(15,23,42,0.95);
+  border: 1px solid rgba(148,163,184,0.5);
+  border-radius: 14px;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
 
 .tdr-btn {
   padding: 10px 20px;
@@ -220,12 +299,10 @@ body.tdr-body::before {
   color: #020617;
   font-weight: 600;
   box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 35px rgba(56,189,248,0.5);
-  transition: all 0.2s ease-out;
 }
 
 .tdr-btn-primary:hover {
   transform: translateY(-2px);
-  filter: brightness(1.15);
 }
 
 /* ===========================
@@ -266,6 +343,5 @@ body.tdr-body::before {
     font-size: 2.3rem;
   }
 }
-
 
 
