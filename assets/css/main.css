@@ -24,7 +24,7 @@
   box-sizing: border-box;
 }
 
-/* 👇 Ajouté juste pour éviter le flash blanc */
+/* On évite le flash blanc global */
 
 html,
 body {
@@ -32,7 +32,7 @@ body {
 }
 
 html {
-  background-color: #020617; /* fond sombre par défaut */
+  background-color: #020617;
 }
 
 /* ===========================
@@ -42,35 +42,29 @@ html {
 body.tdr-body {
   min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #1e293b 0%, #020617 45%, #000 100%);
   color: var(--tdr-text-main);
   overflow-x: hidden;
   position: relative;
-}
 
-/* 🌙 Ciel étoilé simplifié + stable (aucun blanchiment) */
+  /* 🌌 Fond nuit + étoiles intégrées dans le même background */
+  background-color: #020617;
+  background-image:
+    /* étoiles */
+    radial-gradient(2px 2px at 5% 15%, rgba(255,255,255,0.85) 0, transparent 60%),
+    radial-gradient(2px 2px at 18% 32%, rgba(255,255,255,0.75) 0, transparent 60%),
+    radial-gradient(2px 2px at 30% 10%, rgba(255,255,255,0.75) 0, transparent 60%),
+    radial-gradient(2px 2px at 44% 22%, rgba(255,255,255,0.85) 0, transparent 60%),
+    radial-gradient(2px 2px at 62% 18%, rgba(255,255,255,0.75) 0, transparent 60%),
+    radial-gradient(2px 2px at 82% 35%, rgba(255,255,255,0.85) 0, transparent 60%),
+    radial-gradient(3px 3px at 25% 72%, rgba(255,255,255,0.95) 0, transparent 65%),
+    radial-gradient(3px 3px at 50% 68%, rgba(255,255,255,0.95) 0, transparent 65%),
+    radial-gradient(3px 3px at 78% 75%, rgba(255,255,255,0.95) 0, transparent 65%),
+    /* dégradé de nuit */
+    radial-gradient(circle at top, #1e293b 0%, #020617 45%, #000 100%);
 
-body.tdr-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2;
-
-  /* ⭐ étoiles un peu plus grandes et plus visibles */
-  background:
-    radial-gradient(1.8px 1.8px at 5% 15%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1.8px 1.8px at 18% 32%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.8px 1.8px at 30% 10%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.8px 1.8px at 44% 22%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1.8px 1.8px at 62% 18%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.8px 1.8px at 82% 35%, rgba(255,255,255,0.8), transparent),
-
-    radial-gradient(2.4px 2.4px at 25% 72%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(2.4px 2.4px at 50% 68%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(2.4px 2.4px at 78% 75%, rgba(255,255,255,0.9), transparent);
-
-  opacity: 0.45; /* plus lumineux qu’avant */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Orbite décorative */
@@ -82,7 +76,7 @@ body.tdr-body::before {
   width: 780px;
   height: 780px;
   border-radius: 50%;
-  border: 1px solid rgba(148,163,184,0.18);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   z-index: -1;
   pointer-events: none;
 }
@@ -154,7 +148,7 @@ body.tdr-body::before {
 }
 
 /* ===========================
-   HERO HOME
+   MAIN LAYOUT
    =========================== */
 
 .tdr-main {
@@ -300,10 +294,12 @@ body.tdr-body::before {
   color: #020617;
   font-weight: 600;
   box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 35px rgba(56,189,248,0.5);
+  transition: all 0.2s ease-out;
 }
 
 .tdr-btn-primary:hover {
   transform: translateY(-2px);
+  filter: brightness(1.15);
 }
 
 /* ===========================
