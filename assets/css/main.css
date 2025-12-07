@@ -41,6 +41,25 @@ body.tdr-body::before {
   pointer-events: none;
   z-index: -2;
   background:
+         radial-gradient(1px 1px at 12% 15%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 25% 22%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 38% 65%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 42% 45%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 55% 75%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 65% 18%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 72% 40%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 1px at 78% 83%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 32% 78%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 61% 15%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 92% 48%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 40% 90%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 28% 10%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 18% 88%, rgba(255,255,255,0.6), transparent),
     radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.7), transparent),
     radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.7), transparent),
     radial-gradient(1.2px 1.2px at 30% 50%, rgba(255,255,255,0.6), transparent),
@@ -216,18 +235,7 @@ body.tdr-body::before {
   color: var(--tdr-text-muted);
 }
 
-/* LUNE GLOW À DROITE */
-.tdr-hero-moon {
-  flex-shrink: 0;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 20%, #fff7e6, #facc6b 40%, #b45309 90%);
-  box-shadow:
-    0 0 40px rgba(251, 191, 36, 0.7),
-    0 0 90px rgba(250, 204, 21, 0.5);
-}
+
 
 /* ===========================
    LAYOUT 2 COLONNES (interpret)
