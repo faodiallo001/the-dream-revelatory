@@ -1,181 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="tdr-body">
 <head>
   <meta charset="UTF-8" />
-  <title>The Dream Revelator – Interpret My Dream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Describe your dream and receive a structured, spiritual and confidential interpretation by email."
-  />
+  <title>Interpret a Dream – The Dream Revelator</title>
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body class="tdr-body">
-  <div class="tdr-orbit"></div>
 
-  <!-- HEADER -->
+<body class="tdr-body">
+
   <header class="tdr-header">
     <a href="index.html" class="tdr-brand">
       <div class="tdr-logo-moon"></div>
       <div class="tdr-brand-text">
         <span class="tdr-brand-name">The Dream Revelator</span>
-        <span class="tdr-brand-tagline">Spiritual dream interpretation</span>
+        <span class="tdr-brand-tagline">Sacred Dream Interpretation</span>
       </div>
     </a>
-
-    <nav class="tdr-nav">
-      <a href="interpret.html" class="active">Interpret my dream</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
   </header>
 
-  <!-- CONTENU -->
-  <main class="tdr-main tdr-main-two-col">
-    <!-- Texte gauche -->
+  <main class="tdr-main">
+
+    <!-- INTERPRETATION FORM -->
     <section class="tdr-section">
-      <div class="tdr-badge">
-        <span class="tdr-badge-icon">🌓</span>
-        <span>Symbolic, spiritual and introspective – never predictive.</span>
+      <h1 class="tdr-title">
+        <span class="tdr-title-highlight">Interpret</span> your dream
+      </h1>
+      <p class="tdr-text">
+        Submit your dream with clarity. You will receive a unique interpretation
+        based on ancient traditional symbolism. No accounts, no emails — a single
+        reading displayed instantly on this site.
+      </p>
+
+      <div class="tdr-card">
+
+        <div class="tdr-card-header">
+          <div>
+            <div class="tdr-card-title">Interpretation</div>
+            <div class="tdr-card-subtitle">A deep symbolic reading</div>
+          </div>
+          <div class="tdr-card-price">
+            Price<br /><strong>$3.99</strong>
+          </div>
+        </div>
+
+        <form class="tdr-form" id="interpret-form">
+          
+          <div class="tdr-field">
+            <label for="dream">Describe your dream*</label>
+            <textarea id="dream" required placeholder="What did you see?"></textarea>
+          </div>
+
+          <div class="tdr-field">
+            <label for="emotion">How did you feel upon waking?*</label>
+            <input id="emotion" required placeholder="Example: afraid, calm, confused..." />
+          </div>
+
+          <div class="tdr-field">
+            <label for="context">
+              Context of your life <span class="tdr-optional">(optional)</span>
+            </label>
+            <textarea id="context" placeholder="Anything that may influence the meaning"></textarea>
+          </div>
+
+          <label class="tdr-checkbox-row">
+            <input type="checkbox" id="privacy" required />
+            I confirm that I agree to the confidential use of my dream for interpretation.
+          </label>
+
+          <div class="tdr-form-error" id="interpret-error"></div>
+
+          <button class="tdr-btn tdr-btn-primary" id="interpret-btn" type="submit">
+            Interpret my dream – $3.99
+          </button>
+
+        </form>
+
       </div>
 
-      <h1 class="tdr-title">
-        Turn your dreams into
-        <span class="tdr-title-highlight">spiritual guidance.</span>
-      </h1>
-
-      <p class="tdr-text">
-        Share your dream and receive a <strong>written interpretation</strong> by email,
-        structured around symbols, emotions and possible spiritual meanings.
-        No fortune-telling, no guaranteed outcomes – only a deeper way to listen to your soul.
-      </p>
-
-      <ul class="tdr-list">
-        <li>Clear, structured reading (main themes, symbols, questions for reflection).</li>
-        <li>Gentle, spiritual and non-fatalistic tone.</li>
-        <li>Your dream stays private and is never published.</li>
-      </ul>
-
-      <p class="tdr-note" style="margin-top:10px;">
-        You will be redirected to a secure Stripe checkout to complete your payment
-        before we start the interpretation.
-      </p>
     </section>
 
-    <!-- Formulaire droite -->
-    <aside class="tdr-card">
-      <header class="tdr-card-header">
-        <div>
-          <h2 class="tdr-card-title">Interpret my dream</h2>
-          <p class="tdr-card-subtitle">
-            Fill in the details below. You will finalise your request on a secure payment page.
-          </p>
-        </div>
-        <div class="tdr-card-price">
-          <span>Launch price</span>
-          <strong>BRL 14.99 – Brazil</strong>
-          <span>USD 3.99 – International</span>
-        </div>
-      </header>
-
-      <form id="dream-form" class="tdr-form">
-        <div class="tdr-field">
-          <label for="email">Email address for your interpretation</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-          />
-        </div>
-
-        <div class="tdr-field">
-          <label for="dream">Describe your dream</label>
-          <textarea
-            id="dream"
-            name="dream"
-            placeholder="Include places, people, colours, words, actions, and anything that felt important."
-            required
-          ></textarea>
-        </div>
-
-        <div class="tdr-field-inline">
-          <div class="tdr-field">
-            <label for="emotion">How did you feel when you woke up?</label>
-            <select id="emotion" name="emotion" required>
-              <option value="">Select…</option>
-              <option value="calm">Calm / peaceful</option>
-              <option value="happy">Happy / grateful</option>
-              <option value="anxious">Anxious / heavy</option>
-              <option value="fear">Fear / panic</option>
-              <option value="sad">Sad / empty</option>
-              <option value="angry">Angry / frustrated</option>
-              <option value="lost">Lost / confused</option>
-            </select>
-          </div>
-
-          <div class="tdr-field">
-            <label for="lifeContext">
-              Current life context <span class="tdr-optional">(optional)</span>
-            </label>
-            <input
-              type="text"
-              id="lifeContext"
-              name="lifeContext"
-              placeholder="e.g. breakup, new job, grief, pregnancy…"
-            />
-          </div>
-        </div>
-
-        <div class="tdr-field">
-          <label for="intention">What are you mainly looking for?</label>
-          <select id="intention" name="intention" required>
-            <option value="">Select…</option>
-            <option value="meaning">Understanding the overall spiritual message</option>
-            <option value="warning">Checking if there is any warning or danger</option>
-            <option value="healing">Finding guidance for healing and peace</option>
-            <option value="decision">Clarity about an important decision</option>
-            <option value="curiosity">Simple curiosity, no specific question</option>
-          </select>
-        </div>
-
-        <div class="tdr-checkbox-row">
-          <input type="checkbox" id="consent" name="consent" required />
-          <label for="consent">
-            I agree that my dream will be analysed in a confidential way by The Dream Revelator
-            (using an assisted interpretation system). My data will not be sold or used for ads.
-          </label>
-        </div>
-
-        <p id="form-error" class="tdr-form-error" hidden>
-          Something went wrong while preparing the payment. Please try again.
-        </p>
-
-        <div class="tdr-form-footer">
-          <button type="submit" class="tdr-btn tdr-btn-primary" id="pay-button">
-            Interpret my dream – proceed to payment
-          </button>
-          <p class="tdr-note" style="font-size:0.76rem;">
-            The Dream Revelator does not replace medical, psychological or legal advice.
-            Interpretations are symbolic and spiritual. If you are in distress, please contact
-            a qualified professional or emergency service.
-          </p>
-        </div>
-      </form>
-    </aside>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="tdr-footer">
-    <span>© <span id="year"></span> The Dream Revelator. All rights reserved.</span>
-    <nav>
-      <a href="privacy.html">Privacy policy</a>
-      <a href="terms.html">Terms of use</a>
-    </nav>
-  </footer>
+  <script src="assets/js/interpret.js"></script>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
