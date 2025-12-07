@@ -142,5 +142,40 @@
 
         <div class="tdr-checkbox-row">
           <input type="checkbox" id="consent" name="consent" required />
-          <la
+          <label for="consent">
+            I agree that my dream will be analysed in a confidential way by The Dream Revelator
+            (using an assisted interpretation system). My data will not be sold or used for ads.
+          </label>
+        </div>
+
+        <p id="form-error" class="tdr-form-error" hidden>
+          Something went wrong while preparing the payment. Please try again.
+        </p>
+
+        <div class="tdr-form-footer">
+          <button type="submit" class="tdr-btn tdr-btn-primary" id="pay-button">
+            Interpret my dream – proceed to payment
+          </button>
+          <p class="tdr-note" style="font-size:0.76rem;">
+            The Dream Revelator does not replace medical, psychological or legal advice.
+            Interpretations are symbolic and spiritual. If you are in distress, please contact
+            a qualified professional or emergency service.
+          </p>
+        </div>
+      </form>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="tdr-footer">
+    <span>© <span id="year"></span> The Dream Revelator. All rights reserved.</span>
+    <nav>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
 
