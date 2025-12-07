@@ -278,12 +278,23 @@ body.tdr-body {
 
 .tdr-field input,
 .tdr-field textarea {
-  padding: 10px 12px;
-  font-size: 0.9rem;
-  color: var(--tdr-text-main);
-  background: rgba(15,23,42,0.95);
-  border: 1px solid rgba(148,163,184,0.5);
+  padding: 14px 16px;          /* plus confortable */
+  font-size: 1rem;             /* lisible */
   border-radius: 14px;
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.45);
+  color: var(--tdr-text-main);
+  width: 100%;
+}
+
+/* Textarea plus haut */
+.tdr-field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.tdr-section {
+  margin-top: 60px;     /* espace en haut */
 }
 
 /* ===========================
@@ -309,6 +320,18 @@ body.tdr-body {
 .tdr-btn:hover {
   text-decoration: none;       /* pas de soulignement au survol non plus */
 }
+
+.tdr-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.tdr-text {
+  margin-bottom: 30px;   /* espace sous le sous-titre */
+  color: var(--tdr-text-muted);
+}
+
+
 
 .tdr-btn-primary {
   background: linear-gradient(135deg, var(--tdr-accent-strong), #38bdf8);
