@@ -291,11 +291,23 @@ body.tdr-body {
    =========================== */
 
 .tdr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
   border-radius: 999px;
   border: 1px solid transparent;
   cursor: pointer;
   font-size: 0.9rem;
+
+  /* 🔤 Texte plus propre */
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;      /* enlève le soulignement */
+}
+.tdr-btn:hover {
+  text-decoration: none;       /* pas de soulignement au survol non plus */
 }
 
 .tdr-btn-primary {
