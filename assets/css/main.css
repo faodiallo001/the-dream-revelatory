@@ -16,7 +16,7 @@
   --tdr-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
 }
 
-/* Reset */
+/* RESET */
 
 * {
   margin: 0;
@@ -30,58 +30,38 @@
 
 body.tdr-body {
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #1e293b 0%, #020617 45%, #000 100%);
   color: var(--tdr-text-main);
   overflow-x: hidden;
   position: relative;
 }
 
-/* Ciel étoilé : mélange d'étoiles 1.2x1.2 et 2x2, avec scintillement léger */
+/* 🌙 Ciel étoilé simplifié + stable (aucun blanchiment) */
 
-/* Ciel étoilé : petites étoiles, scintillement très léger sans blanchir l'écran */
 body.tdr-body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -2;
-  background:
-    /* petites étoiles 1.2x1.2 */
 
-       radial-gradient(1.2px 1.2px at 5% 15%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.2px 1.2px at 42% 22%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.2px 1.2px at 55% 12%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.2px 1.2px at 65% 8%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.2px 1.2px at 80% 20%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.2px 1.2px at 92% 18%, rgba(255, 255, 255, 0.7), transparent),
-     radial-gradient(1.2px 1.2px at 94% 55%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.2px 1.2px at 12% 85%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.2px 1.2px at 28% 88%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.2px 1.2px at 40% 80%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.2px 1.2px at 55% 90%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.2px 1.2px at 70% 82%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.2px 1.2px at 86% 88%, rgba(255, 255, 255, 0.7), transparent),
-   
-    /* quelques étoiles un peu plus grandes 2x2 */
-    radial-gradient(2px 2px at 15% 22%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(2px 2px at 38% 30%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(2px 2px at 62% 25%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(2px 2px at 82% 35%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(2px 2px at 25% 72%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(2px 2px at 50% 68%, rgba(255, 255, 255, 0.9), transparent),
-    radial-gradient(2px 2px at 78% 75%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(2px 2px at 35% 92%, rgba(255, 255, 255, 0.8), transparent);
-    opacity: 0.7;              /* avant on était trop haut, genre 0.8–0.95 */
- 
+  background:
+    radial-gradient(1.2px 1.2px at 5% 15%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.2px 1.2px at 44% 22%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.2px 1.2px at 62% 18%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.2px 1.2px at 82% 35%, rgba(255,255,255,0.55), transparent),
+
+    radial-gradient(2px 2px at 25% 72%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(2px 2px at 50% 68%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(2px 2px at 78% 75%, rgba(255,255,255,0.65), transparent);
+
+  opacity: 0.22; /* ⭐ Stable, discret, jamais blanchissant */
 }
 
-
-
-/* Orbite décorative sur le côté droit (subtile) */
+/* Orbite décorative */
 
 .tdr-orbit {
   position: fixed;
@@ -90,7 +70,7 @@ body.tdr-body::before {
   width: 780px;
   height: 780px;
   border-radius: 50%;
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(148,163,184,0.18);
   z-index: -1;
   pointer-events: none;
 }
@@ -106,7 +86,6 @@ body.tdr-body::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
 }
 
 .tdr-brand {
@@ -122,9 +101,7 @@ body.tdr-body::before {
   height: 42px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 20%, #ffffff, #e2e8f0 45%, #475569 120%);
-  box-shadow:
-    0 0 25px rgba(255, 255, 255, 0.8),
-    0 0 70px rgba(196, 181, 253, 0.7);
+  box-shadow: 0 0 25px rgba(255,255,255,0.8), 0 0 70px rgba(196,181,253,0.6);
 }
 
 .tdr-brand-text {
@@ -143,8 +120,6 @@ body.tdr-body::before {
   color: var(--tdr-text-muted);
 }
 
-/* Navigation */
-
 .tdr-nav {
   display: flex;
   gap: 14px;
@@ -162,24 +137,22 @@ body.tdr-body::before {
 .tdr-nav a:hover,
 .tdr-nav a.active {
   color: var(--tdr-text-main);
-  border-color: rgba(148, 163, 184, 0.4);
-  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(148,163,184,0.4);
+  background: rgba(15,23,42,0.8);
 }
 
 /* ===========================
-   MAIN LAYOUT
+   HERO HOME
    =========================== */
 
 .tdr-main {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 14px 16px 50px;
+  padding: 14px 16px 56px;
 }
 
-/* HERO PLEIN ÉCRAN (HOME) */
-
 .tdr-main-hero {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 110px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,12 +163,10 @@ body.tdr-body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 0;
 }
 
 .tdr-hero-content {
   max-width: 520px;
-  text-align: left;
 }
 
 .tdr-hero-kicker {
@@ -203,21 +174,20 @@ body.tdr-body::before {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--tdr-text-muted);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .tdr-hero-title {
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(2.8rem, 4vw, 3.6rem);
-  letter-spacing: 0.04em;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .tdr-hero-subtitle {
   font-size: 0.98rem;
   color: var(--tdr-text-muted);
   max-width: 26rem;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .tdr-hero-cta-group {
@@ -226,122 +196,36 @@ body.tdr-body::before {
   gap: 8px;
 }
 
-.tdr-hero-cta {
-  padding-inline: 26px;
-  padding-block: 11px;
-  font-size: 0.96rem;
-}
-
 .tdr-hero-note {
   font-size: 0.78rem;
   color: var(--tdr-text-muted);
 }
 
-/* On supprime la grosse lune jaune à droite */
-
-.tdr-hero-moon {
-  display: none;
-}
-
 /* ===========================
-   LAYOUT 2 COLONNES (INTERPRET)
+   TWO COLUMN LAYOUT (INTERPRET)
    =========================== */
 
 .tdr-main-two-col {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
   gap: 32px;
-  align-items: flex-start;
-}
-
-.tdr-section {
-  padding-top: 8px;
-}
-
-/* Badges, titres, texte */
-
-.tdr-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  font-size: 0.78rem;
-  color: var(--tdr-text-muted);
-  margin-bottom: 16px;
-}
-
-.tdr-badge-icon {
-  font-size: 1rem;
-}
-
-.tdr-title {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-
-.tdr-title-highlight {
-  background: linear-gradient(to right, #e5e7eb, #c4b5fd, #38bdf8);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.tdr-text {
-  color: var(--tdr-text-muted);
-  font-size: 0.96rem;
-  max-width: 35rem;
-  margin-bottom: 16px;
-}
-
-.tdr-text strong {
-  color: var(--tdr-text-main);
-}
-
-.tdr-list {
-  list-style: none;
-  font-size: 0.9rem;
-  color: var(--tdr-text-muted);
-}
-
-.tdr-list li {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 7px;
-}
-
-.tdr-list li::before {
-  content: "✦";
-  color: var(--tdr-accent);
-  font-size: 0.75rem;
-  margin-top: 3px;
-}
-
-.tdr-note {
-  font-size: 0.8rem;
-  color: var(--tdr-text-muted);
 }
 
 /* ===========================
-   CARD + FORMULAIRE (INTERPRET)
+   CARD & FORM
    =========================== */
 
 .tdr-card {
   background: var(--tdr-card-bg);
-  padding: 18px 20px 22px;
+  padding: 20px;
   border-radius: var(--tdr-radius-xl);
   border: 1px solid var(--tdr-border-subtle);
   box-shadow: var(--tdr-shadow);
-  position: relative;
 }
 
 .tdr-card-header {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
   margin-bottom: 12px;
 }
 
@@ -349,7 +233,6 @@ body.tdr-body::before {
   font-family: "Playfair Display", serif;
   font-size: 1.1rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
 }
 
 .tdr-card-subtitle {
@@ -357,18 +240,7 @@ body.tdr-body::before {
   color: var(--tdr-text-muted);
 }
 
-.tdr-card-price {
-  text-align: right;
-  font-size: 0.78rem;
-  color: var(--tdr-text-muted);
-}
-
-.tdr-card-price strong {
-  display: block;
-  color: var(--tdr-accent);
-}
-
-/* Form */
+/* Form fields */
 
 .tdr-form {
   display: flex;
@@ -379,13 +251,7 @@ body.tdr-body::before {
 .tdr-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-
-.tdr-field-inline {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 5px;
 }
 
 .tdr-field label {
@@ -395,97 +261,37 @@ body.tdr-body::before {
   color: var(--tdr-text-muted);
 }
 
-.tdr-optional {
-  text-transform: none;
-  letter-spacing: normal;
-  opacity: 0.7;
-}
-
 .tdr-field input,
-.tdr-field textarea,
-.tdr-field select {
-  padding: 9px 12px;
+.tdr-field textarea {
+  padding: 10px 12px;
   font-size: 0.9rem;
   color: var(--tdr-text-main);
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15,23,42,0.95);
+  border: 1px solid rgba(148,163,184,0.5);
   border-radius: 14px;
-  outline: none;
-}
-
-.tdr-field textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-.tdr-field input::placeholder,
-.tdr-field textarea::placeholder {
-  color: rgba(156, 163, 175, 0.9);
-  font-size: 0.8rem;
-}
-
-.tdr-field input:focus,
-.tdr-field textarea:focus,
-.tdr-field select:focus {
-  border-color: var(--tdr-accent);
-  box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.3);
-}
-
-/* Checkbox */
-
-.tdr-checkbox-row {
-  display: flex;
-  gap: 8px;
-  font-size: 0.8rem;
-  color: var(--tdr-text-muted);
-}
-
-.tdr-checkbox-row input[type="checkbox"] {
-  margin-top: 3px;
-}
-
-/* Erreur formulaire */
-
-.tdr-form-error {
-  color: var(--tdr-danger);
-  font-size: 0.78rem;
 }
 
 /* ===========================
-   BOUTONS
+   BUTTONS
    =========================== */
 
 .tdr-btn {
-  padding: 9px 16px;
+  padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid var(--tdr-border-subtle);
-  background: transparent;
-  color: var(--tdr-accent);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.88rem;
+  border: 1px solid transparent;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .tdr-btn-primary {
   background: linear-gradient(135deg, var(--tdr-accent-strong), #38bdf8);
   color: #020617;
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.6),
-    0 0 35px rgba(56, 189, 248, 0.5);
+  font-weight: 600;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 35px rgba(56,189,248,0.5);
 }
 
 .tdr-btn-primary:hover {
   transform: translateY(-2px);
-}
-
-.tdr-btn:disabled,
-.tdr-btn-loading {
-  opacity: 0.7;
-  cursor: wait;
 }
 
 /* ===========================
@@ -496,7 +302,7 @@ body.tdr-body::before {
   max-width: 1120px;
   margin: 0 auto;
   padding: 20px 16px 30px;
-  border-top: 1px solid rgba(31, 41, 55, 0.6);
+  border-top: 1px solid rgba(31,41,55,0.6);
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
@@ -505,11 +311,6 @@ body.tdr-body::before {
 
 .tdr-footer a {
   color: var(--tdr-accent);
-  text-decoration: none;
-}
-
-.tdr-footer a:hover {
-  text-decoration: underline;
 }
 
 /* ===========================
@@ -518,11 +319,7 @@ body.tdr-body::before {
 
 @media (max-width: 900px) {
   .tdr-main-two-col {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .tdr-main-hero {
-    min-height: calc(100vh - 150px);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -531,30 +328,9 @@ body.tdr-body::before {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .tdr-nav {
-    flex-wrap: wrap;
-  }
-
-  .tdr-hero-content {
-    text-align: left;
-  }
-
   .tdr-hero-title {
     font-size: 2.3rem;
   }
-
-  .tdr-hero-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .tdr-field-inline {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .tdr-footer {
-    flex-direction: column;
-    gap: 8px;
-  }
 }
+
 
