@@ -1,6 +1,5 @@
-    /* ===========================
+/* ===========================
    THE DREAM REVELATOR – GLOBAL STYLES
-   Night theme · Moonlight glow · Premium spiritual feeling
    =========================== */
 
 :root {
@@ -24,6 +23,7 @@
   box-sizing: border-box;
 }
 
+/* BODY + FOND NUIT */
 body.tdr-body {
   min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -33,7 +33,36 @@ body.tdr-body {
   position: relative;
 }
 
-/* Orbital halo decoration */
+/* ÉTOILES FINES ET NOMBREUSES */
+body.tdr-body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.2px 1.2px at 30% 50%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(0.8px 0.8px at 40% 10%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 50% 90%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(0.9px 0.9px at 70% 70%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.1px 1.1px at 90% 60%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(0.8px 0.8px at 75% 15%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 25% 30%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.3px 1.3px at 15% 65%, rgba(255,255,255,0.6), transparent);
+  opacity: 0.8;
+  animation: starTwinkle 8s infinite alternate ease-in-out;
+}
+
+@keyframes starTwinkle {
+  0% { opacity: 0.75; }
+  100% { opacity: 0.95; }
+}
+
+/* ORBITE FINE SUR LA DROITE */
 .tdr-orbit {
   position: fixed;
   top: -300px;
@@ -73,7 +102,7 @@ body.tdr-body {
   height: 42px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 20%, #ffffff, #e2e8f0 45%, #475569 120%);
-  box-shadow: 
+  box-shadow:
     0 0 25px rgba(255, 255, 255, 0.8),
     0 0 70px rgba(196, 181, 253, 0.7);
 }
@@ -94,7 +123,7 @@ body.tdr-body {
   color: var(--tdr-text-muted);
 }
 
-/* NAVIGATION */
+/* Navigation */
 .tdr-nav {
   display: flex;
   gap: 14px;
@@ -126,21 +155,96 @@ body.tdr-body {
   padding: 14px 16px 50px;
 }
 
+/* HERO PLEIN ÉCRAN */
+.tdr-main-hero {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tdr-hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+.tdr-hero-content {
+  max-width: 520px;
+}
+
+.tdr-hero-kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tdr-text-muted);
+  margin-bottom: 10px;
+}
+
+.tdr-hero-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.tdr-hero-subtitle {
+  font-size: 0.98rem;
+  color: var(--tdr-text-muted);
+  max-width: 26rem;
+  margin-bottom: 18px;
+}
+
+.tdr-hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tdr-hero-cta {
+  padding-inline: 26px;
+  padding-block: 11px;
+  font-size: 0.96rem;
+}
+
+.tdr-hero-note {
+  font-size: 0.78rem;
+  color: var(--tdr-text-muted);
+}
+
+/* LUNE GLOW À DROITE */
+.tdr-hero-moon {
+  flex-shrink: 0;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 20%, #fff7e6, #facc6b 40%, #b45309 90%);
+  box-shadow:
+    0 0 40px rgba(251, 191, 36, 0.7),
+    0 0 90px rgba(250, 204, 21, 0.5);
+}
+
+/* ===========================
+   LAYOUT 2 COLONNES (interpret)
+   =========================== */
+
 .tdr-main-two-col {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
   gap: 32px;
-  align-items: start;
+  align-items: flex-start;
 }
-
-/* ===========================
-   BADGES, TITLES, TEXT
-   =========================== */
 
 .tdr-section {
   padding-top: 8px;
 }
 
+/* Badges, titres, texte */
 .tdr-badge {
   display: inline-flex;
   align-items: center;
@@ -173,7 +277,7 @@ body.tdr-body {
 
 .tdr-text {
   color: var(--tdr-text-muted);
-  font-size: 0.97rem;
+  font-size: 0.96rem;
   max-width: 35rem;
   margin-bottom: 16px;
 }
@@ -207,7 +311,7 @@ body.tdr-body {
 }
 
 /* ===========================
-   CARD / FORM
+   CARD + FORMULAIRE
    =========================== */
 
 .tdr-card {
@@ -249,8 +353,7 @@ body.tdr-body {
   color: var(--tdr-accent);
 }
 
-/* FORM ELEMENTS */
-
+/* Form */
 .tdr-form {
   display: flex;
   flex-direction: column;
@@ -265,7 +368,7 @@ body.tdr-body {
 
 .tdr-field-inline {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -274,6 +377,12 @@ body.tdr-body {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--tdr-text-muted);
+}
+
+.tdr-optional {
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 0.7;
 }
 
 .tdr-field input,
@@ -293,6 +402,12 @@ body.tdr-body {
   resize: vertical;
 }
 
+.tdr-field input::placeholder,
+.tdr-field textarea::placeholder {
+  color: rgba(156,163,175,0.9);
+  font-size: 0.8rem;
+}
+
 .tdr-field input:focus,
 .tdr-field textarea:focus,
 .tdr-field select:focus {
@@ -300,6 +415,7 @@ body.tdr-body {
   box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.3);
 }
 
+/* Checkbox */
 .tdr-checkbox-row {
   display: flex;
   gap: 8px;
@@ -307,18 +423,18 @@ body.tdr-body {
   color: var(--tdr-text-muted);
 }
 
-.tdr-checkbox-row input {
+.tdr-checkbox-row input[type="checkbox"] {
   margin-top: 3px;
 }
 
-/* ERROR MESSAGE */
+/* Error */
 .tdr-form-error {
   color: var(--tdr-danger);
   font-size: 0.78rem;
 }
 
 /* ===========================
-   BUTTONS
+   BOUTONS
    =========================== */
 
 .tdr-btn {
@@ -330,6 +446,7 @@ body.tdr-body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-size: 0.88rem;
   cursor: pointer;
@@ -338,7 +455,7 @@ body.tdr-body {
 .tdr-btn-primary {
   background: linear-gradient(135deg, var(--tdr-accent-strong), #38bdf8);
   color: #020617;
-  box-shadow: 
+  box-shadow:
     0 8px 30px rgba(0, 0, 0, 0.6),
     0 0 35px rgba(56, 189, 248, 0.5);
 }
@@ -381,124 +498,6 @@ body.tdr-body {
    RESPONSIVE
    =========================== */
 
-@media (max-width: 880px) {
-  .tdr-main-two-col {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .tdr-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .tdr-nav {
-    flex-wrap: wrap;
-  }
-  .tdr-footer {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-
-/* ===========================
-   FULLSCREEN HERO
-   =========================== */
-
-.tdr-main-hero {
-  min-height: calc(100vh - 120px); /* header + un peu d'espace */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tdr-hero {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 40px 0;
-}
-
-.tdr-hero-content {
-  max-width: 520px;
-}
-
-.tdr-hero-kicker {
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--tdr-text-muted);
-  margin-bottom: 10px;
-}
-
-.tdr-hero-title {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2.8rem, 4vw, 3.6rem);
-  letter-spacing: 0.04em;
-  margin-bottom: 10px;
-}
-
-.tdr-hero-subtitle {
-  font-size: 0.98rem;
-  color: var(--tdr-text-muted);
-  max-width: 26rem;
-  margin-bottom: 18px;
-}
-
-.tdr-hero-cta-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.tdr-hero-cta {
-  padding-inline: 26px;
-  padding-block: 11px;
-  font-size: 0.96rem;
-}
-
-.tdr-hero-note {
-  font-size: 0.78rem;
-  color: var(--tdr-text-muted);
-}
-
-/* LUNE GÉANTE SUR LA DROITE */
-
-.tdr-hero-moon {
-  flex-shrink: 0;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 20%, #fff7e6, #facc6b 40%, #b45309 90%);
-  position: relative;
-  box-shadow:
-    0 0 40px rgba(251, 191, 36, 0.7),
-    0 0 90px rgba(250, 204, 21, 0.5);
-  clip-path: ellipse(80% 100% at 30% 50%);
-}
-
-/* Fond étoiles léger (comme la capture) */
-body.tdr-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.3px 1.3px at 70% 30%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1.2px 1.2px at 50% 10%, rgba(255,255,255,0.8), transparent);
-  opacity: 0.9;
-}
-
-/* Responsive hero */
 @media (max-width: 900px) {
   .tdr-hero {
     flex-direction: column;
@@ -511,9 +510,22 @@ body.tdr-body::before {
     height: 210px;
     margin-top: 10px;
   }
+
+  .tdr-main-two-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
+  .tdr-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tdr-nav {
+    flex-wrap: wrap;
+  }
+
   .tdr-main-hero {
     min-height: calc(100vh - 160px);
   }
@@ -524,6 +536,15 @@ body.tdr-body::before {
 
   .tdr-hero-subtitle {
     font-size: 0.9rem;
+  }
+
+  .tdr-field-inline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tdr-footer {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
