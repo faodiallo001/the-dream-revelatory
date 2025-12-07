@@ -1,859 +1,167 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Dream Revelator – Interprétation spirituelle des rêves</title>
+  <title>The Dream Revelator – Spiritual Dream Interpretation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Dream Revelator – guide spirituel des rêves. Recevez une interprétation profonde, structurée et confidentielle de vos rêves." />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-main: #020016;
-      --bg-card: rgba(10, 10, 30, 0.9);
-      --accent: #b28bff;
-      --accent-soft: #e0c8ff;
-      --accent-strong: #9f7bff;
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --danger: #f97373;
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --shadow-soft: 0 18px 80px rgba(0, 0, 0, 0.7);
-      --border-subtle: rgba(148, 163, 184, 0.25);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
-      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* --- Background stars + glow --- */
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    body::before {
-      background-image:
-        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 80% 10%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(2px 2px at 50% 70%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1.5px 1.5px at 20% 80%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 70% 60%, rgba(255,255,255,0.7), transparent);
-      opacity: 0.8;
-    }
-
-    body::after {
-      background:
-        radial-gradient(circle at 80% 10%, rgba(178,139,255,0.32), transparent 55%),
-        radial-gradient(circle at 20% 90%, rgba(56,189,248,0.2), transparent 60%);
-      mix-blend-mode: screen;
-    }
-
-    .orbital-ring {
-      position: fixed;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      border: 1px solid rgba(148,163,184,0.13);
-      top: -200px;
-      right: -200px;
-      z-index: -1;
-      transform: rotate(-18deg);
-      pointer-events: none;
-    }
-
-    .orbital-ring::before,
-    .orbital-ring::after {
-      content: "";
-      position: absolute;
-      inset: 15%;
-      border-radius: inherit;
-      border: 1px dashed rgba(148,163,184,0.15);
-    }
-
-    .orbital-ring::after {
-      inset: 30%;
-      border-style: solid;
-      border-color: rgba(148,163,184,0.12);
-    }
-
-    /* --- Layout --- */
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 20px 16px 64px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 10px 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-moon {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #ffffff, #d1d5db 45%, #4b5563 100%);
-      box-shadow:
-        0 0 30px rgba(244,244,245,0.7),
-        0 0 80px rgba(178,139,255,0.6);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-moon::after {
-      content: "";
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      top: -10%;
-      left: -10%;
-      background: radial-gradient(circle at 10% 10%, rgba(0,0,0,0.28), transparent 60%);
-      mix-blend-mode: multiply;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-name {
-      font-family: "Playfair Display", serif;
-      font-size: 1.06rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .brand-tagline {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-    }
-
-    .chip {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: linear-gradient(to right, rgba(12,10,40,0.9), rgba(17,24,39,0.9));
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #4ade80;
-      box-shadow: 0 0 12px rgba(74,222,128,0.7);
-    }
-
-    .language-toggle {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.35);
-      background: rgba(15,23,42,0.85);
-      display: inline-flex;
-      gap: 6px;
-      cursor: default;
-    }
-
-    .language-toggle span {
-      opacity: 0.6;
-    }
-
-    .language-toggle span.active {
-      opacity: 1;
-      font-weight: 500;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-      gap: 32px;
-      margin-top: 18px;
-    }
-
-    /* --- Hero left --- */
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px 4px 4px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: radial-gradient(circle at 0 0, rgba(248,250,252,0.12), transparent 60%);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .hero-badge-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #ffffff, #d1d5db 45%, #4b5563 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 16px rgba(248,250,252,0.6);
-      font-size: 0.9rem;
-    }
-
-    .hero-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2rem, 3.2vw, 2.7rem);
-      line-height: 1.15;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .hero-title span {
-      display: block;
-    }
-
-    .hero-title-highlight {
-      background: linear-gradient(to right, #e5e7eb, #c4b5fd, #67e8f9);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 32rem;
-      margin-bottom: 18px;
-    }
-
-    .hero-subtitle strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .hero-list {
-      list-style: none;
-      margin-bottom: 20px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .hero-list li::before {
-      content: "✦";
-      font-size: 0.7rem;
-      color: var(--accent-soft);
-      margin-top: 3px;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .btn-primary {
-      border: none;
-      outline: none;
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      background: radial-gradient(circle at 0 0, rgba(248,250,252,0.18), transparent 55%),
-                  linear-gradient(135deg, var(--accent-strong), #22d3ee);
-      color: #020617;
-      box-shadow:
-        0 12px 40px rgba(0,0,0,0.75),
-        0 0 40px rgba(125,211,252,0.5);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-
-    .btn-primary span.icon {
-      font-size: 1.1rem;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-      box-shadow:
-        0 16px 50px rgba(0,0,0,0.78),
-        0 0 52px rgba(125,211,252,0.6);
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .hero-shield {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 6px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      opacity: 0.9;
-    }
-
-    .hero-shield-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.76rem;
-    }
-
-    /* --- Card droite : Formulaire --- */
-
-    .card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      background: linear-gradient(145deg, rgba(15,23,42,0.95), rgba(12,10,40,0.96));
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      top: -120px;
-      right: -60px;
-      opacity: 0.45;
-      filter: blur(0.3px);
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148,163,184,0.5);
-      top: -40px;
-      right: 40px;
-      opacity: 0.45;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .card-title-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .card-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .card-subtitle {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .card-price {
-      text-align: right;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .card-price strong {
-      display: block;
-      font-size: 0.92rem;
-      color: var(--accent-soft);
-    }
-
-    form {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-
-    label span.optional {
-      text-transform: none;
-      letter-spacing: normal;
-      opacity: 0.7;
-    }
-
-    input[type="email"],
-    textarea,
-    select {
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(148,163,184,0.4);
-      background: rgba(15,23,42,0.85);
-      padding: 8px 11px;
-      color: var(--text-main);
-      font-size: 0.86rem;
-      outline: none;
-      transition: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-      resize: vertical;
-      min-height: 38px;
-    }
-
-    textarea {
-      min-height: 90px;
-      max-height: 180px;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(156,163,175,0.8);
-      font-size: 0.8rem;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--accent-soft);
-      box-shadow: 0 0 0 1px rgba(192,132,252,0.4);
-      background: rgba(15,23,42,0.98);
-    }
-
-    .field-inline {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .checkbox-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .checkbox-row input[type="checkbox"] {
-      margin-top: 2px;
-      accent-color: var(--accent-strong);
-    }
-
-    .form-footer {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 2px;
-    }
-
-    .btn-submit {
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: radial-gradient(circle at 10% 0, rgba(248,250,252,0.18), transparent 55%),
-                  linear-gradient(135deg, #020617, #111827);
-      padding: 9px 14px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--accent-soft);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    .btn-submit span.icon {
-      font-size: 1rem;
-    }
-
-    .btn-submit:hover {
-      background: radial-gradient(circle at 10% 0, rgba(248,250,252,0.22), transparent 55%),
-                  linear-gradient(135deg, #020617, #020617);
-      transform: translateY(-0.5px);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.7);
-    }
-
-    .form-disclaimer {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .form-disclaimer strong {
-      color: var(--accent-soft);
-      font-weight: 500;
-    }
-
-    .form-warning {
-      font-size: 0.72rem;
-      color: var(--danger);
-      margin-top: 2px;
-      opacity: 0.9;
-    }
-
-    /* --- Footer mini --- */
-
-    footer {
-      margin-top: 32px;
-      border-top: 1px solid rgba(31,41,55,0.9);
-      padding-top: 12px;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: space-between;
-    }
-
-    footer a {
-      color: var(--accent-soft);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* --- Responsive --- */
-
-    @media (max-width: 880px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .card {
-        margin-top: 8px;
-      }
-
-      header {
-        align-items: flex-start;
-      }
-
-      .header-right {
-        flex-direction: column;
-        align-items: flex-end;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page {
-        padding: 16px 14px 40px;
-      }
-
-      main {
-        margin-top: 12px;
-      }
-
-      .hero-title {
-        font-size: 1.8rem;
-      }
-
-      .field-inline {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-
-      .header-right {
-        align-self: stretch;
-        justify-content: space-between;
-        flex-direction: row;
-      }
-    }
-  </style>
+  <meta
+    name="description"
+    content="The Dream Revelator offers spiritual and symbolic dream interpretations, written and confidential – not fortune-telling, but a deeper way to listen to your soul."
+  />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body>
-  <div class="orbital-ring"></div>
+<body class="tdr-body">
+  <div class="tdr-orbit"></div>
 
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="logo-moon"></div>
-        <div class="brand-text">
-          <div class="brand-name">The Dream Revelator</div>
-          <div class="brand-tagline">Guide spirituel des rêves, sans voyance</div>
-        </div>
+  <!-- HEADER -->
+  <header class="tdr-header">
+    <a href="index.html" class="tdr-brand">
+      <div class="tdr-logo-moon"></div>
+      <div class="tdr-brand-text">
+        <span class="tdr-brand-name">The Dream Revelator</span>
+        <span class="tdr-brand-tagline">Spiritual dream guidance, not fortune-telling.</span>
       </div>
+    </a>
 
-      <div class="header-right">
-        <div class="chip">
-          <div class="chip-dot"></div>
-          <span>Interprétation confidentielle en moins de 24h*</span>
-        </div>
-        <div class="language-toggle" title="Sélecteur de langues (placeholder)">
-          <span class="active">FR</span>
-          <span>EN</span>
-          <span>PT</span>
-        </div>
-      </div>
-    </header>
+    <nav class="tdr-nav">
+      <a href="interpret.html">Interpret my dream</a>
+      <a href="about.html">How it works</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
 
-    <main>
-      <!-- Colonne gauche : texte -->
-      <section aria-label="Présentation du service">
-        <div class="hero-badge">
-          <div class="hero-badge-icon">🌓</div>
-          <span>Une lecture symbolique, pas de voyance.</span>
+  <!-- MAIN -->
+  <main class="tdr-main">
+    <!-- HERO SECTION -->
+    <section class="tdr-main-two-col">
+      <!-- Left: hero text -->
+      <div class="tdr-section">
+        <div class="tdr-badge">
+          <span class="tdr-badge-icon">🌓</span>
+          <span>Symbolic, spiritual and introspective – never predictive.</span>
         </div>
 
-        <h1 class="hero-title">
-          <span>Vos rêves ne sont pas</span>
-          <span class="hero-title-highlight">un hasard.</span>
+        <h1 class="tdr-title">
+          Your dreams are not random.
+          <span class="tdr-title-highlight">They are messages to your soul.</span>
         </h1>
 
-        <p class="hero-subtitle">
-          The Dream Revelator vous aide à lire vos rêves comme un
-          <strong>langage spirituel</strong> : purification, avertissement, bénédiction,
-          fardeau, changement… Vous recevez une interprétation
-          <strong>structurée, profonde et confidentielle</strong>.
+        <p class="tdr-text">
+          The Dream Revelator offers <strong>written dream interpretations</strong> that are
+          spiritual, symbolic and confidential. We do not predict the future – we help you see
+          what your dreams may be saying about your inner life, desires, fears and
+          transformations.
         </p>
 
-        <ul class="hero-list">
-          <li>Une analyse écrite, claire et organisée (contexte, symboles, axes de réflexion).</li>
-          <li>Ton introspectif, spirituel et bienveillant – jamais fataliste.</li>
-          <li>Pas de “voyance”, pas de prédictions magiques. Juste un guide pour votre âme.</li>
+        <ul class="tdr-list">
+          <li>Structured interpretation sent by email (themes, symbols, questions for reflection).</li>
+          <li>Spiritual, gentle and non-fatalistic tone – no fear, no doom.</li>
+          <li>Your dream remains private and is never published or used for advertising.</li>
         </ul>
 
-        <div class="hero-cta-row">
-          <button class="btn-primary" type="button" id="scrollToForm">
-            <span class="icon">✨</span>
-            <span>Interpréter mon rêve maintenant</span>
-          </button>
-          <span class="hero-note">Vous décrivez votre rêve, nous envoyons une interprétation par e-mail.</span>
+        <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+          <a href="interpret.html" class="tdr-btn tdr-btn-primary">
+            <span class="tdr-btn-icon">✨</span>
+            <span>Interpret my dream</span>
+          </a>
+          <a href="about.html" class="tdr-btn">
+            Learn how it works
+          </a>
         </div>
 
-        <div class="hero-shield">
-          <div class="hero-shield-icon">🔒</div>
-          <span>Données traitées de manière confidentielle. Votre rêve n’est ni publié ni partagé.</span>
-        </div>
-      </section>
+        <p class="tdr-note" style="margin-top: 10px;">
+          You describe your dream, complete a secure payment, and receive a written interpretation
+          directly in your inbox.
+        </p>
+      </div>
 
-      <!-- Colonne droite : formulaire -->
-      <aside aria-label="Formulaire d'interprétation">
-        <div class="card" id="formSection">
-          <div class="card-header">
-            <div class="card-title-wrap">
-              <div class="card-title">Interpréter mon rêve</div>
-              <div class="card-subtitle">Remplissez les détails ci-dessous. Le paiement et l’envoi seront automatisés plus tard.</div>
-            </div>
-            <div class="card-price">
-              <span>Offre de lancement (exemple)</span>
-              <strong>R$ 14,99 – Brésil</strong>
-              <span>US$ 3.99 – International</span>
-            </div>
+      <!-- Right: how it works card -->
+      <aside class="tdr-card">
+        <header class="tdr-card-header">
+          <div>
+            <h2 class="tdr-card-title">How it works</h2>
+            <p class="tdr-card-subtitle">
+              A simple, private and guided process from your night to your inbox.
+            </p>
           </div>
+          <div class="tdr-card-price">
+            <span>Launch price example</span>
+            <strong>BRL 14.99 – Brazil</strong>
+            <span>USD 3.99 – International</span>
+          </div>
+        </header>
 
-          <form id="dreamForm">
-            <div class="field-group">
-              <label for="email">E-mail de réception</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="ex. vous@email.com"
-                required
-              />
-            </div>
+        <ol class="tdr-list" style="margin-bottom: 10px;">
+          <li>You describe your dream, your emotions and your current life context.</li>
+          <li>You complete a secure payment via Stripe.</li>
+          <li>Your dream is analysed through a spiritual and symbolic lens.</li>
+          <li>You receive a written interpretation by email, structured and easy to read.</li>
+        </ol>
 
-            <div class="field-group">
-              <label for="dream">Description du rêve</label>
-              <textarea
-                id="dream"
-                name="dream"
-                placeholder="Décrivez votre rêve avec le plus de détails possible : lieux, personnes, couleurs, émotions, mots, symboles, etc."
-                required
-              ></textarea>
-            </div>
+        <p class="tdr-note">
+          The interpretation focuses on <strong>meaning</strong>, <strong>inner work</strong>
+          and <strong>possible spiritual insights</strong> – never fortune-telling or
+          “guaranteed outcomes”.
+        </p>
 
-            <div class="field-inline">
-              <div class="field-group">
-                <label for="emotion">État émotionnel au réveil</label>
-                <select id="emotion" name="emotion" required>
-                  <option value="">Sélectionnez...</option>
-                  <option value="calme">Calme / apaisé(e)</option>
-                  <option value="heureux">Heureux(se) / reconnaissant(e)</option>
-                  <option value="angoisse">Anxieux(se) / oppressé(e)</option>
-                  <option value="peur">Peur / panique</option>
-                  <option value="tristesse">Tristesse / vide</option>
-                  <option value="colere">Colère / frustration</option>
-                  <option value="confusion">Perdu(e) / confus(e)</option>
-                </select>
-              </div>
-
-              <div class="field-group">
-                <label for="lifeContext">Contexte de vie <span class="optional">(optionnel)</span></label>
-                <input
-                  type="text"
-                  id="lifeContext"
-                  name="lifeContext"
-                  placeholder="ex. séparation, nouveau travail, deuil, grossesse…"
-                />
-              </div>
-            </div>
-
-            <div class="field-group">
-              <label for="intention">Ce que vous recherchez</label>
-              <select id="intention" name="intention" required>
-                <option value="">Sélectionnez...</option>
-                <option value="guidance">Comprendre le message spirituel global</option>
-                <option value="warning">Savoir s’il y a un avertissement ou un danger</option>
-                <option value="healing">Trouver une piste de guérison / apaisement</option>
-                <option value="decision">Aider à clarifier une décision importante</option>
-                <option value="curiosity">Simple curiosité, sans question précise</option>
-              </select>
-            </div>
-
-            <div class="checkbox-row">
-              <input type="checkbox" id="consent" name="consent" required />
-              <label for="consent">
-                J’accepte que mon rêve soit analysé de façon confidentielle par The Dream Revelator
-                (via un système d’interprétation assistée). Mes données ne seront ni revendues, ni utilisées
-                pour de la publicité.
-              </label>
-            </div>
-
-            <div class="form-footer">
-              <button class="btn-submit" type="submit">
-                <span class="icon">🌌</span>
-                <span>Continuer vers le paiement (bientôt)</span>
-              </button>
-
-              <p class="form-warning">
-                ⚠️ Paiement et envoi automatique ne sont pas encore activés sur cette version.
-                Pour l’instant, le formulaire ne fait qu’une validation de base côté navigateur.
-              </p>
-
-              <p class="form-disclaimer">
-                <strong>Important :</strong> The Dream Revelator ne remplace pas un avis médical,
-                psychologique ou juridique. Les interprétations proposées sont spirituelles,
-                symboliques et introspectives. En cas de détresse, veuillez consulter un professionnel.
-              </p>
-            </div>
-          </form>
+        <div style="margin-top: 12px;">
+          <a href="interpret.html" class="tdr-btn tdr-btn-primary" style="width:100%; justify-content:center;">
+            Start with your dream tonight
+          </a>
         </div>
       </aside>
-    </main>
+    </section>
 
-    <footer>
-      <span>© <span id="year"></span> The Dream Revelator. Tous droits réservés.</span>
-      <span>
-        Pas de voyance &middot;
-        <a href="#0">Politique de confidentialité</a> &middot;
-        <a href="#0">Conditions d’utilisation</a>
-      </span>
-    </footer>
-  </div>
+    <!-- SECOND SECTION: WHAT IT IS / IS NOT -->
+    <section class="tdr-section" style="margin-top: 32px;">
+      <h2 class="tdr-title" style="font-size:1.3rem; text-transform:none; letter-spacing:0.03em;">
+        What The Dream Revelator is – and what it is not
+      </h2>
 
-  <script>
-    // Scroll vers le formulaire
-    document.getElementById("scrollToForm")?.addEventListener("click", () => {
-      const formSection = document.getElementById("formSection");
-      if (formSection) {
-        formSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
+      <div class="tdr-main-two-col" style="margin-top: 14px; gap:18px;">
+        <div class="tdr-card" style="padding:14px 16px;">
+          <h3 class="tdr-card-title" style="font-size:0.95rem; text-transform:none;">
+            It <em>is</em> for you if…
+          </h3>
+          <ul class="tdr-list" style="margin-top:8px;">
+            <li>You feel that your dreams carry meaning, even when they are strange.</li>
+            <li>You are spiritual and want a deeper perspective than a random “dream dictionary”.</li>
+            <li>You like written guidance that you can read, re-read and meditate on.</li>
+            <li>You want your experience to remain private and respectful.</li>
+          </ul>
+        </div>
 
-    // Année dynamique
-    document.getElementById("year").textContent = new Date().getFullYear();
+        <div class="tdr-card" style="padding:14px 16px;">
+          <h3 class="tdr-card-title" style="font-size:0.95rem; text-transform:none;">
+            It is <em>not</em> for you if…
+          </h3>
+          <ul class="tdr-list" style="margin-top:8px;">
+            <li>You are looking for fortune-telling or guaranteed predictions about the future.</li>
+            <li>You expect medical, psychological or legal advice.</li>
+            <li>You want a quick yes/no answer without personal reflection.</li>
+            <li>You are not willing to look at your inner life with honesty and kindness.</li>
+          </ul>
+        </div>
+      </div>
 
-    // Validation simple du formulaire (sans vrai backend pour le moment)
-    const form = document.getElementById("dreamForm");
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+      <p class="tdr-note" style="margin-top: 14px;">
+        <strong>Important:</strong> The Dream Revelator does not replace therapy, medical care or any
+        professional consultation. It is a spiritual and symbolic companion for your inner journey.
+      </p>
+    </section>
+  </main>
 
-      alert(
-        "Pour l’instant, le paiement n’est pas encore connecté.\n\nProchaine étape : configurer le backend (paiement + e-mail automatique)."
-      );
-    });
-  </script>
+  <!-- FOOTER -->
+  <footer class="tdr-footer">
+    <span>© <span id="year"></span> The Dream Revelator. All rights reserved.</span>
+    <nav>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
