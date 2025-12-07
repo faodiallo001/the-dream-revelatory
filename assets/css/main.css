@@ -57,45 +57,20 @@ body.tdr-body::before {
   pointer-events: none;
   z-index: -2;
 
+  /* ⭐ étoiles un peu plus grandes et plus visibles */
   background:
-    radial-gradient(1.2px 1.2px at 5% 15%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 44% 22%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 62% 18%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 82% 35%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(2px 2px at 25% 72%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(2px 2px at 50% 68%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(1.2px 1.2px at 5% 15%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 44% 22%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 62% 18%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 82% 35%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(2px 2px at 25% 72%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(2px 2px at 50% 68%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(2px 2px at 78% 75%, rgba(255,255,255,0.65), transparent)
-     radial-gradient(1.2px 1.2px at 5% 15%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 44% 22%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 62% 18%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 82% 35%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(2px 2px at 25% 72%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(2px 2px at 50% 68%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(1.2px 1.2px at 5% 15%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 18% 32%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 30% 10%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 44% 22%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.2px 1.2px at 62% 18%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.2px 1.2px at 82% 35%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(2px 2px at 25% 72%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(2px 2px at 50% 68%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(2px 2px at 78% 75%, rgba(255,255,255,0.65), transparent)
-    radial-gradient(2px 2px at 78% 75%, rgba(255,255,255,0.65), transparent)
-    radial-gradient(2px 2px at 78% 75%, rgba(255,255,255,0.65), transparent);
+    radial-gradient(1.8px 1.8px at 5% 15%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.8px 1.8px at 18% 32%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.8px 1.8px at 30% 10%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.8px 1.8px at 44% 22%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.8px 1.8px at 62% 18%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.8px 1.8px at 82% 35%, rgba(255,255,255,0.8), transparent),
 
-  opacity: 0.50; /* ⭐ Stable, discret, jamais blanchissant */
+    radial-gradient(2.4px 2.4px at 25% 72%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2.4px 2.4px at 50% 68%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2.4px 2.4px at 78% 75%, rgba(255,255,255,0.9), transparent);
+
+  opacity: 0.45; /* plus lumineux qu’avant */
 }
 
 /* Orbite décorative */
