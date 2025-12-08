@@ -1,7 +1,14 @@
 // api/create-stripe.js
 
-const { kv } = require("@vercel/kv");
 const Stripe = require("stripe");
+let kv = null;
+
+// On essaie de charger KV sans casser la fonction si ce n'est pas configuré
+try {
+  kv = require("@vercel/kv");
+} catch (e) {
+  console.warn("KV not available, continuing without storage.");
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-06-20",
@@ -37,20 +44,25 @@ module.exports = async (req, res) => {
     // ID très sécurisé pour ce rêve
     const crypto = require("crypto");
     const id = crypto.randomBytes(18).toString("hex");
-    const kvKeyData = `dream:${id}:data`;
 
-    // Stocker le rêve dans KV (3 jours)
-    await kv.set(
-      kvKeyData,
-      {
-        dream,
-        emotion,
-        context: context || "",
-      },
-      { ex: 259200 } // 3 jours
-    );
+    // On ESSAIE de stocker dans KV, mais si ça plante on continue
+    if (kv && kv.set) {
+      const kvKeyData = `dream:${id}:data`;
+      try {
+        await kv.set(
+          kvKeyData,
+          { dream, emotion, context: context || "" },
+          { ex: 259200 } // 3 jours
+        );
+      } catch (err) {
+        console.error("KV error in create-stripe:", err);
+      }
+    } else {
+      console.warn("KV not configured, skipping dream storage.");
+    }
 
-    const origin = req.headers.origin || "https://thedreamrevelator.com";
+    const origin =
+      req.headers.origin || "https://the-dream-revelator.vercel.app";
 
     // Créer la session Stripe
     const session = await stripe.checkout.sessions.create({
@@ -63,7 +75,8 @@ module.exports = async (req, res) => {
             unit_amount: 399, // $3.99 = 399 cents
             product_data: {
               name: "Dream Interpretation",
-              description: "One symbolic dream reading based on your submission.",
+              description:
+                "One symbolic dream reading based on your submission.",
             },
           },
           quantity: 1,
@@ -85,4 +98,5 @@ module.exports = async (req, res) => {
     });
   }
 };
+
 
