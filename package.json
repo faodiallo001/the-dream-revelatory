@@ -1,7 +1,9 @@
 {
+  "name": "dream-revelator",
+  "version": "1.0.0",
+  "private": true,
   "dependencies": {
-    "stripe": "^16.0.0",
     "openai": "^4.73.0",
-    "@vercel/kv": "^1.0.0"
+    "@vercel/kv": "^2.0.0"
   }
 }
