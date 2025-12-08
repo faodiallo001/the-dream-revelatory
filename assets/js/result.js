@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Charger l'interprétation depuis l'API
   async function loadInterpretation() {
     try {
-      const response = await fetch("/api/create-interpretation", {
+      const response = await fetch("/api/get-interpretation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadInterpretation();
 
-  // Partage de la page actuelle
+  // ==============================
+  //    Bouton de partage
+  // ==============================
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
       const shareUrl = window.location.href;
@@ -84,4 +86,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
