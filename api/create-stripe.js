@@ -1,35 +1,16 @@
-// api/create-stripe.js
+import { kv } from "@vercel/kv";
+import Stripe from "stripe";
+import crypto from "crypto";
 
-const Stripe = require("stripe");
-let kv = null;
-
-// On essaie de charger KV sans casser la fonction si ce n'est pas configuré
-try {
-  kv = require("@vercel/kv");
-} catch (e) {
-  console.warn("KV not available, continuing without storage.");
-}
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2024-06-20",
-});
-
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res
-      .status(405)
-      .json({ success: false, error: "Method not allowed" });
+    return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
   try {
-    // Vercel peut envoyer le body en string
     let body = req.body;
     if (typeof body === "string") {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        console.error("JSON parse error:", e);
-      }
+      body = JSON.parse(body);
     }
 
     const { dream, emotion, context } = body || {};
@@ -41,30 +22,17 @@ module.exports = async (req, res) => {
       });
     }
 
-    // ID très sécurisé pour ce rêve
-    const crypto = require("crypto");
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2024-06-20",
+    });
+
     const id = crypto.randomBytes(18).toString("hex");
 
-    // On ESSAIE de stocker dans KV, mais si ça plante on continue
-    if (kv && kv.set) {
-      const kvKeyData = `dream:${id}:data`;
-      try {
-        await kv.set(
-          kvKeyData,
-          { dream, emotion, context: context || "" },
-          { ex: 259200 } // 3 jours
-        );
-      } catch (err) {
-        console.error("KV error in create-stripe:", err);
-      }
-    } else {
-      console.warn("KV not configured, skipping dream storage.");
-    }
+    // Store dream info
+    await kv.set(`dream:${id}:data`, { dream, emotion, context: context || "" }, { ex: 259200 });
 
-    const origin =
-      req.headers.origin || "https://the-dream-revelator.vercel.app";
+    const origin = req.headers.origin || "https://the-dream-revelator.vercel.app";
 
-    // Créer la session Stripe
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
@@ -72,11 +40,9 @@ module.exports = async (req, res) => {
         {
           price_data: {
             currency: "usd",
-            unit_amount: 399, // $3.99 = 399 cents
+            unit_amount: 399,
             product_data: {
               name: "Dream Interpretation",
-              description:
-                "One symbolic dream reading based on your submission.",
             },
           },
           quantity: 1,
@@ -86,17 +52,12 @@ module.exports = async (req, res) => {
       cancel_url: `${origin}/interpret.html?canceled=1`,
     });
 
-    return res.status(200).json({
-      success: true,
-      url: session.url,
-    });
+    return res.status(200).json({ success: true, url: session.url });
+
   } catch (error) {
     console.error("Error in create-stripe:", error);
-    return res.status(500).json({
-      success: false,
-      error: "Internal server error",
-    });
+    return res.status(500).json({ success: false, error: "Internal server error" });
   }
-};
+}
 
 
