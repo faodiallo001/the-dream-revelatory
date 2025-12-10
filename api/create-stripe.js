@@ -112,12 +112,16 @@ Write 4–6 paragraphs, very clear, traditionally symbolic.
     });
   } catch (error) {
     console.error("Error in create-stripe:", error);
+
+    // <<< ajoute ce bloc de debug pour voir ce qui ne va pas >>>
     return res.status(500).json({
       success: false,
-      error: "Internal server error",
+      error: error.message || "Internal server error",
+      stack: error.stack,
     });
   }
 }
+
 
 
 
