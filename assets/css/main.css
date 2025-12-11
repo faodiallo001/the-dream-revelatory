@@ -278,8 +278,8 @@ body.tdr-body {
 
 .tdr-field input,
 .tdr-field textarea {
-  padding: 14px 16px;          /* plus confortable */
-  font-size: 1rem;             /* lisible */
+  padding: 14px 16px;
+  font-size: 1rem;
   border-radius: 14px;
   background: rgba(15,23,42,0.9);
   border: 1px solid rgba(148,163,184,0.45);
@@ -294,7 +294,7 @@ body.tdr-body {
 }
 
 .tdr-section {
-  margin-top: 60px;     /* espace en haut */
+  margin-top: 60px;
 }
 
 /* ===========================
@@ -311,14 +311,14 @@ body.tdr-body {
   cursor: pointer;
   font-size: 0.9rem;
 
-  /* 🔤 Texte plus propre */
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-decoration: none;      /* enlève le soulignement */
+  text-decoration: none;
 }
+
 .tdr-btn:hover {
-  text-decoration: none;       /* pas de soulignement au survol non plus */
+  text-decoration: none;
 }
 
 .tdr-title {
@@ -327,11 +327,9 @@ body.tdr-body {
 }
 
 .tdr-text {
-  margin-bottom: 30px;   /* espace sous le sous-titre */
+  margin-bottom: 30px;
   color: var(--tdr-text-muted);
 }
-
-
 
 .tdr-btn-primary {
   background: linear-gradient(135deg, var(--tdr-accent-strong), #38bdf8);
@@ -366,7 +364,7 @@ body.tdr-body {
 }
 
 /* ===========================
-   RESPONSIVE
+   RESPONSIVE GLOBAL
    =========================== */
 
 @media (max-width: 900px) {
@@ -382,6 +380,164 @@ body.tdr-body {
   }
   .tdr-hero-title {
     font-size: 2.3rem;
+  }
+}
+
+/* ============================================================
+   RESULT PAGE — PREMIUM STYLE (Glow + Moon + Animation)
+   ============================================================ */
+
+/* ✨ Apparition douce */
+#result-card,
+#dream-output,
+#share-btn {
+  animation: fadeIn 0.9s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌙 Glow autour du titre de la carte résultat */
+#result-card .tdr-card-title {
+  position: relative;
+  padding-bottom: 6px;
+  font-size: 1.3rem;
+  color: var(--tdr-accent);
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.7);
+}
+
+#result-card .tdr-card-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 55px;
+  background: linear-gradient(90deg, var(--tdr-accent), transparent);
+  box-shadow: 0 0 8px var(--tdr-accent);
+}
+
+/* 🌙 Lune devant chaque section principale */
+#dream-output strong::before {
+  content: "🌙 ";
+  color: #c4b5fd;
+  font-size: 1rem;
+  text-shadow: 0 0 10px rgba(196, 181, 253, 0.8);
+}
+
+/* 📝 Texte de l'interprétation */
+#dream-output {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--tdr-text-main);
+  margin-top: 14px;
+  white-space: pre-line;
+  max-width: 70ch;
+}
+
+/* ✨ Glow de la carte résultat */
+#result-card {
+  background: rgba(15, 23, 42, 0.92);
+  border-radius: var(--tdr-radius-xl);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow:
+    0 0 25px rgba(168, 85, 247, 0.18),
+    0 0 55px rgba(56, 189, 248, 0.12),
+    var(--tdr-shadow);
+  padding: 32px 34px;
+  max-width: 820px;
+  margin: 40px auto 0;
+}
+
+/* 🌌 Bouton Share */
+#share-btn {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 260px;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--tdr-accent-strong), #38bdf8);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 6px 25px rgba(168, 85, 247, 0.3);
+}
+
+#share-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+/* ============================================================
+   RESPONSIVE — RESULT PAGE
+   ============================================================ */
+
+/* 📱 Téléphones (max 640px) */
+@media (max-width: 640px) {
+  #result-card {
+    margin: 20px 12px;
+    padding: 22px 20px;
+  }
+  #dream-output {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  #share-btn {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    max-width: 100%;
+  }
+  #result-card .tdr-card-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* 📱 Très petits téléphones (iPhone SE, 12 mini) */
+@media (max-width: 400px) {
+  #result-card {
+    padding: 18px 16px;
+  }
+  #result-card .tdr-card-title {
+    font-size: 1rem;
+  }
+  #dream-output {
+    font-size: 0.88rem;
+  }
+}
+
+/* 📟 Tablettes */
+@media (min-width: 641px) and (max-width: 900px) {
+  #result-card {
+    max-width: 650px;
+    padding: 28px 30px;
+  }
+  #dream-output {
+    font-size: 1.05rem;
+  }
+}
+
+/* 💻 Laptops moyens */
+@media (min-width: 900px) and (max-width: 1200px) {
+  #result-card {
+    max-width: 760px;
+  }
+}
+
+/* 🖥️ Très grands écrans */
+@media (min-width: 1500px) {
+  #result-card {
+    max-width: 900px;
+    padding: 40px 48px;
+  }
+  #dream-output {
+    font-size: 1.15rem;
   }
 }
 
