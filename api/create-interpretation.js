@@ -21,23 +21,33 @@ export default async function handler(req, res) {
     const id = crypto.randomBytes(18).toString("hex");
     const kvKey = `dream:${id}`;
 
-    // Generate interpretation (same language + name + no religion)
+    // Generate interpretation (Islamic-era traditional style, same language, no explicit religion)
     const prompt = `
-You will read the user's dream and respond in the SAME LANGUAGE the user used
+You will interpret the user's dream using the traditional symbolic method
+found in ancient Middle Eastern and Islamic-era dream interpretation,
+BUT without mentioning religion, scriptures, prophets, or any religious authority.
+
+Do NOT use or mention the words Islam, Muslim, Quran, Bible, Hadith,
+or any prophet's name. You simply apply the symbolic logic.
+
+LANGUAGE:
+Write the interpretation in the SAME LANGUAGE the user used
 (French, English, Portuguese, Spanish, etc.).
 
-If a name is provided, gently address the dreamer by name once or twice
+NAME:
+If a name is provided, gently address the dreamer by name 1–2 times
 in a natural way. If no name is provided, do not invent or mention a name.
 
-ROLE & STYLE:
-- You are an expert in ancient dream symbolism (traditional Middle Eastern interpretation style).
-- You DO NOT mention religion, prophets, scripture, Islam, Bible, hadith, angels,
-  or any religious figure.
-- You interpret dreams using ancestral symbolic logic only.
-- Your tone is serious, mystical, structured, and old-world, never psychological,
-  never poetic.
-- You explain symbols through ideas like purification, warning, elevation, burden,
-  transition, protection, enemies, blessings, healing, destiny, trials.
+STYLE YOU MUST FOLLOW:
+- Use classical meanings known in traditional dream interpretation texts.
+- Serious, grounded, old-world tone. Not poetic, not psychological coaching.
+- Focus on: protection, enemies, blessings, upcoming events, money, liberation,
+  obstacles, status elevation, hidden intentions, relationships, family ties.
+- Bodily actions such as urination or defecation symbolize:
+  release, removal of burdens, and often financial gain or relief.
+- Animals, water, falling, heights, children, houses, clothes, darkness, and light
+  MUST follow traditional symbolic meanings (enemies, blessings, worries,
+  responsibilities, changes, reputation, guidance, etc.).
 
 USER INPUT:
 Name: ${name || "None"}
@@ -51,8 +61,8 @@ STRUCTURE REQUIRED:
 3. Message for the dreamer  
 4. What this dream suggests going forward  
 
-Write 4–6 paragraphs, clear and traditionally symbolic, in the same language
-as the dream above.
+Write 4–6 paragraphs, very clear, traditionally symbolic, following these
+classical meanings, in the same language as the dream above.
     `;
 
     const completion = await openai.chat.completions.create({
