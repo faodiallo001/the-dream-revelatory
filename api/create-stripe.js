@@ -19,7 +19,8 @@ export default async function handler(req, res) {
       body = JSON.parse(body);
     }
 
-    const { dream, emotion, context } = body || {};
+    // ✅ On récupère aussi name
+    const { dream, emotion, context, name } = body || {};
 
     if (!dream || !emotion) {
       return res.status(400).json({
@@ -28,7 +29,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // Stripe client
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
       apiVersion: "2024-06-20",
     });
@@ -36,31 +36,40 @@ export default async function handler(req, res) {
     // ID pour ce rêve
     const id = crypto.randomBytes(18).toString("hex");
 
-    // 1) Générer l’interprétation AVANT d’envoyer l’utilisateur sur Stripe
+    // ✅ OpenAI – même langue que le rêve + prénom
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
     const prompt = `
-You are an expert in ancient dream symbolism (traditional Middle Eastern interpretation style).
-You DO NOT mention religion, prophets, scripture, Islam, hadith, or any religious figure.
+You will read the user's dream and respond in the SAME LANGUAGE the dream is written in
+(French, English, Portuguese, Spanish, etc.). Detect the language and use it consistently.
 
-INSTEAD:
-- You interpret dreams using ancestral symbolic logic.
-- Your tone is serious, mystical, structured, and old-world.
-- You speak in a neutral spiritual tone, never poetic or psychological.
-- You explain symbols like purification, warning, elevation, burden, transition, protection, enemies, blessings, healing.
+If a name is provided, address the dreamer by that name once at the beginning
+and once later in the message, in a natural way. If no name is provided,
+do not invent any name.
 
-USER DREAM:
+ROLE & STYLE:
+- You are an expert in ancient dream symbolism (traditional Middle Eastern interpretation style).
+- You DO NOT mention religion, prophets, scripture, Islam, Bible, hadith, angels,
+  or any religious figure.
+- You interpret dreams using ancestral symbolic logic only.
+- Your tone is serious, mystical, structured, and old-world, never psychological and never poetic.
+- You explain symbols through ideas like purification, warning, elevation, burden,
+  transition, protection, enemies, blessings, healing, destiny, trials.
+
+USER INPUT:
+Name: ${name || "None"}
 Dream: ${dream}
 Emotion: ${emotion}
-Context: ${context || "none"}
+Context: ${context || "None"}
 
-STRUCTURE REQUIRED:
+STRUCTURE REQUIRED (titles translated into the same language as the dream):
 1. Main meaning  
 2. Symbolic breakdown  
 3. Message for the dreamer  
 4. What this dream suggests going forward  
 
-Write 4–6 paragraphs, very clear, traditionally symbolic.
+Write 4–6 paragraphs, clear and traditionally symbolic, fully in the same language
+as the dream above.
     `;
 
     const completion = await openai.chat.completions.create({
@@ -71,20 +80,20 @@ Write 4–6 paragraphs, very clear, traditionally symbolic.
 
     const interpretation = completion.choices[0].message.content.trim();
 
-    // 2) Stocker l’interprétation dans KV pour 3 jours
+    // ✅ On stocke l'interprétation dans KV
     await kv.set(`dream:${id}`, interpretation, { ex: 259200 });
 
-    // (optionnel) stocker aussi les infos brutes
+    // (optionnel) aussi les données brutes
     await kv.set(
       `dream:${id}:data`,
-      { dream, emotion, context: context || "" },
+      { dream, emotion, context: context || "", name: name || "" },
       { ex: 259200 }
     );
 
     const origin =
       req.headers.origin || "https://the-dream-revelator.vercel.app";
 
-    // 3) Créer la session Stripe
+    // Stripe checkout
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
@@ -92,7 +101,7 @@ Write 4–6 paragraphs, very clear, traditionally symbolic.
         {
           price_data: {
             currency: "usd",
-            unit_amount: 399, // $3.99
+            unit_amount: 399,
             product_data: {
               name: "Dream Interpretation",
               description:
@@ -112,12 +121,9 @@ Write 4–6 paragraphs, very clear, traditionally symbolic.
     });
   } catch (error) {
     console.error("Error in create-stripe:", error);
-
-    // <<< ajoute ce bloc de debug pour voir ce qui ne va pas >>>
     return res.status(500).json({
       success: false,
-      error: error.message || "Internal server error",
-      stack: error.stack,
+      error: "Internal server error",
     });
   }
 }
