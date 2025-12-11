@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("interpret-form");
   const btn = document.getElementById("interpret-btn");
   const errorEl = document.getElementById("interpret-error");
+  const name = document.getElementById("name")?.value.trim();
+
 
   if (!form || !btn) return;
 
