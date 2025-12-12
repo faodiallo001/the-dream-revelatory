@@ -7,7 +7,6 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  // ➜ On récupère aussi le name
   const { dream, emotion, context, name } = req.body;
 
   if (!dream || !emotion) {
@@ -17,37 +16,45 @@ export default async function handler(req, res) {
   try {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-    // Ultra secure ID
     const id = crypto.randomBytes(18).toString("hex");
     const kvKey = `dream:${id}`;
 
-    // Generate interpretation (Islamic-era traditional style, same language, no explicit religion)
+    // ⭐ NOUVEAU PROMPT – TITRES AUTO-TRADUITS ⭐
     const prompt = `
-You will interpret the user's dream using the traditional symbolic method
-found in ancient Middle Eastern and Islamic-era dream interpretation,
-BUT without mentioning religion, scriptures, prophets, or any religious authority.
+You are an expert in ancient Middle Eastern symbolic dream interpretation.
+You NEVER mention religion, prophets, scriptures, Islam, Christianity or any sacred figures.
 
-Do NOT use or mention the words Islam, Muslim, Quran, Bible, Hadith,
-or any prophet's name. You simply apply the symbolic logic.
+LANGUAGE RULE:
+Write the ENTIRE interpretation in the SAME LANGUAGE the user used.
+This includes:
+- Section titles
+- Subtitles
+- Content
+- Tone
 
-LANGUAGE:
-Write the interpretation in the SAME LANGUAGE the user used
-(French, English, Portuguese, Spanish, etc.).
+TITLE TRANSLATION RULE:
+Translate these section titles into the user’s language:
+1. Main meaning
+2. Symbolic breakdown
+3. Message for the dreamer
+4. What this dream suggests going forward
 
-NAME:
-If a name is provided, gently address the dreamer by name 1–2 times
-in a natural way. If no name is provided, do not invent or mention a name.
+EXAMPLES:
+- French → “Signification principale”, “Analyse symbolique”, “Message pour le rêveur / la rêveuse”
+- Portuguese → “Significado principal”, “Análise simbólica”
+- Spanish → “Significado principal”, “Análisis simbólico”
+- English → Keep the original
 
-STYLE YOU MUST FOLLOW:
-- Use classical meanings known in traditional dream interpretation texts.
-- Serious, grounded, old-world tone. Not poetic, not psychological coaching.
-- Focus on: protection, enemies, blessings, upcoming events, money, liberation,
-  obstacles, status elevation, hidden intentions, relationships, family ties.
-- Bodily actions such as urination or defecation symbolize:
-  release, removal of burdens, and often financial gain or relief.
-- Animals, water, falling, heights, children, houses, clothes, darkness, and light
-  MUST follow traditional symbolic meanings (enemies, blessings, worries,
-  responsibilities, changes, reputation, guidance, etc.).
+NAME RULE:
+If a name is provided, gently address the dreamer once or twice.  
+If not, do not invent a name.
+
+STYLE:
+Use traditional symbolic meanings:
+- enemies, protection, obstacles, hidden intentions  
+- blessings, money, liberation, danger, family ties  
+- classical meaning of animals, water, heights, houses, clothes, darkness, light  
+- bodily actions (urination/defecation) = release + often financial relief or gain  
 
 USER INPUT:
 Name: ${name || "None"}
@@ -55,14 +62,13 @@ Dream: ${dream}
 Emotion: ${emotion}
 Context: ${context || "None"}
 
-STRUCTURE REQUIRED:
-1. Main meaning  
-2. Symbolic breakdown  
-3. Message for the dreamer  
-4. What this dream suggests going forward  
+STRUCTURE (translated into user's language):
+1. Main meaning
+2. Symbolic breakdown
+3. Message for the dreamer
+4. What this dream suggests going forward
 
-Write 4–6 paragraphs, very clear, traditionally symbolic, following these
-classical meanings, in the same language as the dream above.
+Write 4–6 paragraphs, very clear, serious, traditionally symbolic.
     `;
 
     const completion = await openai.chat.completions.create({
@@ -73,13 +79,11 @@ classical meanings, in the same language as the dream above.
 
     const interpretation = completion.choices[0].message.content.trim();
 
-    // Store in Vercel KV for 3 days (60 sec * 60 min * 72 hours)
     await kv.set(kvKey, interpretation, { ex: 259200 });
 
-    // Return URL
     return res.status(200).json({
       success: true,
-      id: id,
+      id,
       url: `/result.html?id=${id}`,
     });
 
