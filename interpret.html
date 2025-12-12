@@ -19,7 +19,7 @@
       <div class="tdr-logo-moon"></div>
       <div class="tdr-brand-text">
         <span class="tdr-brand-name">The Dream Revelator</span>
-        <span class="tdr-brand-tagline">Sacred Dream Interpretation</span>
+        <span class="tdr-brand-tagline" data-i18n="header_tagline"></span>
       </div>
     </a>
   </header>
@@ -36,8 +36,8 @@
 
         <div class="tdr-card-header">
           <div>
-            <div class="tdr-card-title">Interpretation</div>
-            <div class="tdr-card-subtitle">A deep symbolic reading</div>
+            <div class="tdr-card-title" data-i18n="interpret_title"></div>
+            <div class="tdr-card-subtitle" data-i18n="interpret_subtitle"></div>
           </div>
 
           <div class="tdr-card-price">
@@ -48,24 +48,24 @@
 
         <div class="tdr-field">
           <label for="name" data-i18n="name_label"></label>
-          <input type="text" id="name" placeholder="Your name (optional)">
+          <input type="text" id="name" data-i18n-placeholder="name_placeholder" />
         </div>
 
         <form class="tdr-form" id="interpret-form">
           
           <div class="tdr-field">
             <label for="dream" data-i18n="dream_label"></label>
-            <textarea id="dream" required placeholder="What did you see?"></textarea>
+            <textarea id="dream" required data-i18n-placeholder="dream_placeholder"></textarea>
           </div>
 
           <div class="tdr-field">
             <label for="emotion" data-i18n="emotion_label"></label>
-            <input id="emotion" required placeholder="Example: afraid, calm, confused..." />
+            <input id="emotion" required data-i18n-placeholder="emotion_placeholder" />
           </div>
 
           <div class="tdr-field">
             <label for="context" data-i18n="context_label"></label>
-            <textarea id="context" placeholder="Anything that may influence the meaning"></textarea>
+            <textarea id="context" data-i18n-placeholder="context_placeholder"></textarea>
           </div>
 
           <label class="tdr-checkbox-row">
@@ -90,5 +90,6 @@
 
 </body>
 </html>
+
 
 
