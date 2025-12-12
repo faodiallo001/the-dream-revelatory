@@ -3,8 +3,8 @@
 <head>
   
   <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
-<meta name="theme-color" content="#020617" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#020617" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,10 +28,9 @@
 
     <!-- INTERPRETATION FORM -->
     <section class="tdr-section">
+
       <h1 class="tdr-title" data-i18n="interpret_title"></h1>
-
-    <p class="tdr-text" data-i18n="interpret_subtitle"></p>
-
+      <p class="tdr-text" data-i18n="interpret_subtitle"></p>
 
       <div class="tdr-card">
 
@@ -40,46 +39,43 @@
             <div class="tdr-card-title">Interpretation</div>
             <div class="tdr-card-subtitle">A deep symbolic reading</div>
           </div>
+
           <div class="tdr-card-price">
-            Price<br /><strong>$3.99</strong>
+            <span data-i18n="price_label"></span><br />
+            <strong>$3.99</strong>
           </div>
         </div>
 
         <div class="tdr-field">
-      <label for="name" data-i18n="name_label"></label>
-      <input type="text" id="name" placeholder="Your name (optional)">
-   </div>
-
+          <label for="name" data-i18n="name_label"></label>
+          <input type="text" id="name" placeholder="Your name (optional)">
+        </div>
 
         <form class="tdr-form" id="interpret-form">
           
           <div class="tdr-field">
-          <label for="dream" data-i18n="dream_label"></label>
-
+            <label for="dream" data-i18n="dream_label"></label>
             <textarea id="dream" required placeholder="What did you see?"></textarea>
           </div>
 
           <div class="tdr-field">
-           <label for="emotion" data-i18n="emotion_label"></label>
+            <label for="emotion" data-i18n="emotion_label"></label>
             <input id="emotion" required placeholder="Example: afraid, calm, confused..." />
           </div>
 
           <div class="tdr-field">
-           <label for="context" data-i18n="context_label"></label>
-
-            </label>
+            <label for="context" data-i18n="context_label"></label>
             <textarea id="context" placeholder="Anything that may influence the meaning"></textarea>
           </div>
 
-             <label class="tdr-checkbox-row">
-           <input type="checkbox" id="privacy" required />
-           <span data-i18n="privacy_text"></span>
-           </label>
+          <label class="tdr-checkbox-row">
+            <input type="checkbox" id="privacy" required />
+            <span data-i18n="privacy_text"></span>
+          </label>
 
           <div class="tdr-form-error" id="interpret-error"></div>
 
-         <button class="tdr-btn tdr-btn-primary" id="interpret-btn" type="submit" data-i18n="button_interpret"></button>
-
+          <button class="tdr-btn tdr-btn-primary" id="interpret-btn" type="submit" data-i18n="button_interpret"></button>
 
         </form>
 
@@ -90,6 +86,7 @@
   </main>
 
   <script src="assets/js/interpret.js"></script>
+  <script src="assets/js/lang.js"></script>
 
 </body>
 </html>
