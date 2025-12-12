@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("interpret-form");
   const btn = document.getElementById("interpret-btn");
   const errorEl = document.getElementById("interpret-error");
-  const name = document.getElementById("name")?.value.trim();
-
 
   if (!form || !btn) return;
 
@@ -13,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     errorEl.textContent = "";
 
+    // ✅ Le prénom doit être récupéré ici, au moment du submit
+    const name = document.getElementById("name")?.value.trim();
     const dream = document.getElementById("dream")?.value.trim();
     const emotion = document.getElementById("emotion")?.value.trim();
     const context = document.getElementById("context")?.value.trim();
@@ -38,7 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ dream, emotion, context, name }),
+
+        // ✅ On envoie bien le nom maintenant !
+        body: JSON.stringify({ name, dream, emotion, context }),
       });
 
       if (!response.ok) {
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Redirection vers Stripe Checkout
       window.location.href = data.url;
+
     } catch (err) {
       console.error(err);
       errorEl.textContent =
