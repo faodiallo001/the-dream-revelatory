@@ -1,0 +1,49 @@
+{
+  "en": {
+    "interpret_title": "Interpret your dream",
+    "interpret_subtitle": "Submit your dream with clarity.",
+    "name_label": "Your Name (optional)",
+    "dream_label": "Describe your dream*",
+    "emotion_label": "How did you feel upon waking?*",
+    "context_label": "Context of your life (optional)",
+    "privacy_text": "I confirm that I agree to the confidential use of my dream for interpretation.",
+    "button_interpret": "Interpret my dream – $3.99",
+    "price_label": "Price"
+  },
+
+  "fr": {
+    "interpret_title": "Interpréter votre rêve",
+    "interpret_subtitle": "Décrivez votre rêve clairement.",
+    "name_label": "Votre nom (optionnel)",
+    "dream_label": "Décrivez votre rêve*",
+    "emotion_label": "Comment vous êtes-vous senti(e) au réveil ?*",
+    "context_label": "Contexte de votre vie (optionnel)",
+    "privacy_text": "Je confirme accepter l'utilisation confidentielle de mon rêve pour l'interprétation.",
+    "button_interpret": "Interpréter mon rêve – 3,99 $",
+    "price_label": "Prix"
+  },
+
+  "pt": {
+    "interpret_title": "Interprete o seu sonho",
+    "interpret_subtitle": "Descreva seu sonho com clareza.",
+    "name_label": "Seu nome (opcional)",
+    "dream_label": "Descreva seu sonho*",
+    "emotion_label": "Como você se sentiu ao acordar?*",
+    "context_label": "Contexto da sua vida (opcional)",
+    "privacy_text": "Confirmo que concordo com o uso confidencial do meu sonho para interpretação.",
+    "button_interpret": "Interpretar meu sonho – $3.99",
+    "price_label": "Preço"
+  },
+
+  "es": {
+    "interpret_title": "Interpreta tu sueño",
+    "interpret_subtitle": "Describe tu sueño con claridad.",
+    "name_label": "Tu nombre (opcional)",
+    "dream_label": "Describe tu sueño*",
+    "emotion_label": "¿Cómo te sentiste al despertar?*",
+    "context_label": "Contexto de tu vida (opcional)",
+    "privacy_text": "Confirmo que acepto el uso confidencial de mi sueño para la interpretación.",
+    "button_interpret": "Interpretar mi sueño – $3.99",
+    "price_label": "Precio"
+  }
+}
