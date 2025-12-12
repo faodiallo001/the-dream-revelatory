@@ -1,10 +1,17 @@
 {
   "en": {
-    "header_tagline": "Sacred Dream Interpretation",
+    "header_tagline": "Spiritual dream interpretation",
 
+    "home_kicker": "Illuminated dream interpretation",
     "home_title": "Unlock the meaning of your dreams",
     "home_subtitle": "Ancient symbolic interpretations using timeless wisdom.",
     "home_cta": "Interpret my dream",
+    "home_note": "Describe your dream, complete a secure payment, and get your personal interpretation.",
+    "footer_rights": "All rights reserved.",
+    "footer_about": "About",
+    "footer_faq": "FAQ",
+    "footer_privacy": "Privacy policy",
+    "footer_terms": "Terms of use",
 
     "interpret_title": "Interpret your dream",
     "interpret_subtitle": "Submit your dream with clarity.",
@@ -28,9 +35,16 @@
   "fr": {
     "header_tagline": "Interprétation sacrée des rêves",
 
+    "home_kicker": "Interprétation illuminée des rêves",
     "home_title": "Déverrouillez le sens de vos rêves",
     "home_subtitle": "Interprétations symboliques anciennes basées sur une sagesse intemporelle.",
     "home_cta": "Interpréter mon rêve",
+    "home_note": "Décrivez votre rêve, effectuez un paiement sécurisé et recevez votre interprétation.",
+    "footer_rights": "Tous droits réservés.",
+    "footer_about": "À propos",
+    "footer_faq": "FAQ",
+    "footer_privacy": "Politique de confidentialité",
+    "footer_terms": "Conditions d'utilisation",
 
     "interpret_title": "Interpréter votre rêve",
     "interpret_subtitle": "Décrivez votre rêve clairement.",
@@ -52,11 +66,18 @@
   },
 
   "pt": {
-    "header_tagline": "Interpretação Sagrada de Sonhos",
+    "header_tagline": "Interpretação sagrada de sonhos",
 
+    "home_kicker": "Interpretação iluminada de sonhos",
     "home_title": "Desbloqueie o significado dos seus sonhos",
     "home_subtitle": "Interpretações simbólicas antigas baseadas em sabedoria atemporal.",
     "home_cta": "Interpretar meu sonho",
+    "home_note": "Descreva seu sonho, faça um pagamento seguro e receba sua interpretação.",
+    "footer_rights": "Todos os direitos reservados.",
+    "footer_about": "Sobre",
+    "footer_faq": "FAQ",
+    "footer_privacy": "Política de privacidade",
+    "footer_terms": "Termos de uso",
 
     "interpret_title": "Interprete o seu sonho",
     "interpret_subtitle": "Descreva seu sonho com clareza.",
@@ -78,11 +99,18 @@
   },
 
   "es": {
-    "header_tagline": "Interpretación Sagrada de los Sueños",
+    "header_tagline": "Interpretación sagrada de los sueños",
 
+    "home_kicker": "Interpretación iluminada de los sueños",
     "home_title": "Desbloquea el significado de tus sueños",
     "home_subtitle": "Interpretaciones simbólicas antiguas basadas en sabiduría eterna.",
     "home_cta": "Interpretar mi sueño",
+    "home_note": "Describe tu sueño, realiza un pago seguro y recibe tu interpretación.",
+    "footer_rights": "Todos los derechos reservados.",
+    "footer_about": "Sobre",
+    "footer_faq": "FAQ",
+    "footer_privacy": "Política de privacidad",
+    "footer_terms": "Términos de uso",
 
     "interpret_title": "Interpreta tu sueño",
     "interpret_subtitle": "Describe tu sueño con claridad.",
@@ -103,3 +131,4 @@
     "share_button": "Compartir esta interpretación"
   }
 }
+
