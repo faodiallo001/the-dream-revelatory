@@ -30,9 +30,8 @@
     <section class="tdr-section">
       <h1 class="tdr-title" data-i18n="interpret_title"></h1>
 
-      <p class="tdr-text">
-        Submit your dream with clarity.
-      </p>
+    <p class="tdr-text" data-i18n="interpret_subtitle"></p>
+
 
       <div class="tdr-card">
 
@@ -47,7 +46,7 @@
         </div>
 
         <div class="tdr-field">
-       <label for="name">Your Name (optional)</label>
+      <label for="name" data-i18n="name_label"></label>
       <input type="text" id="name" placeholder="Your name (optional)">
    </div>
 
@@ -55,32 +54,32 @@
         <form class="tdr-form" id="interpret-form">
           
           <div class="tdr-field">
-            <label for="dream">Describe your dream*</label>
+          <label for="dream" data-i18n="dream_label"></label>
+
             <textarea id="dream" required placeholder="What did you see?"></textarea>
           </div>
 
           <div class="tdr-field">
-            <label for="emotion">How did you feel upon waking?*</label>
+           <label for="emotion" data-i18n="emotion_label"></label>
             <input id="emotion" required placeholder="Example: afraid, calm, confused..." />
           </div>
 
           <div class="tdr-field">
-            <label for="context">
-              Context of your life <span class="tdr-optional">(optional)</span>
+           <label for="context" data-i18n="context_label"></label>
+
             </label>
             <textarea id="context" placeholder="Anything that may influence the meaning"></textarea>
           </div>
 
-          <label class="tdr-checkbox-row">
-            <input type="checkbox" id="privacy" required />
-            I confirm that I agree to the confidential use of my dream for interpretation.
-          </label>
+             <label class="tdr-checkbox-row">
+           <input type="checkbox" id="privacy" required />
+           <span data-i18n="privacy_text"></span>
+           </label>
 
           <div class="tdr-form-error" id="interpret-error"></div>
 
-          <button class="tdr-btn tdr-btn-primary" id="interpret-btn" type="submit">
-            Interpret my dream – $3.99
-          </button>
+         <button class="tdr-btn tdr-btn-primary" id="interpret-btn" type="submit" data-i18n="button_interpret"></button>
+
 
         </form>
 
