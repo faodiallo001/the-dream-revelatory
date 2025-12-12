@@ -4,18 +4,21 @@
   <meta charset="UTF-8" />
   <title>The Dream Revelator – Spiritual Dream Interpretation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <meta
     name="description"
     content="The Dream Revelator offers illuminated spiritual dream interpretations – confidential, written and symbolic."
   />
+
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#020617" />
 </head>
 <body class="tdr-body">
+  
   <div class="tdr-orbit"></div>
-  <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
-<meta name="theme-color" content="#020617" />
-
 
   <!-- HEADER -->
   <header class="tdr-header">
@@ -23,33 +26,28 @@
       <div class="tdr-logo-moon"></div>
       <div class="tdr-brand-text">
         <span class="tdr-brand-name">The Dream Revelator</span>
-        <span class="tdr-brand-tagline">Spiritual dream interpretation</span>
+        <span class="tdr-brand-tagline" data-i18n="header_tagline"></span>
       </div>
     </a>
-
   </header>
 
-  <!-- HERO PLEIN ÉCRAN -->
+  <!-- HERO FULL SCREEN -->
   <main class="tdr-main tdr-main-hero">
     <section class="tdr-hero">
       <div class="tdr-hero-content">
-        <p class="tdr-hero-kicker">Illuminated dream interpretation</p>
 
-        <h1 class="tdr-hero-title">The Dream Revelator</h1>
+        <p class="tdr-hero-kicker" data-i18n="home_kicker"></p>
 
-        <p class="tdr-hero-subtitle">
-         Every dream carries a message.
-         We help you understand its deeper meaning.
-        </p>
+        <h1 class="tdr-hero-title" data-i18n="home_title"></h1>
+
+        <p class="tdr-hero-subtitle" data-i18n="home_subtitle"></p>
 
         <div class="tdr-hero-cta-group">
-          <a href="interpret.html" class="tdr-btn tdr-btn-primary tdr-hero-cta">
-            Interpret my dream
-          </a>
-          <p class="tdr-hero-note">
-            Describe your dream, complete a secure payment, and get your personal interpretation.
-          </p>
+          <a href="interpret.html" class="tdr-btn tdr-btn-primary tdr-hero-cta" data-i18n="home_cta"></a>
+          
+          <p class="tdr-hero-note" data-i18n="home_note"></p>
         </div>
+
       </div>
 
       <div class="tdr-hero-moon" aria-hidden="true"></div>
@@ -57,19 +55,25 @@
   </main>
 
   <!-- FOOTER -->
- <footer class="tdr-footer">
-  <span>© <span id="year"></span> The Dream Revelator. All rights reserved.</span>
+  <footer class="tdr-footer">
+    <span>
+      © <span id="year"></span> The Dream Revelator —
+      <span data-i18n="footer_rights"></span>
+    </span>
 
-  <nav class="tdr-footer-links">
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="privacy.html">Privacy policy</a>
-    <a href="terms.html">Terms of use</a>
-  </nav>
-</footer>
+    <nav class="tdr-footer-links">
+      <a href="about.html" data-i18n="footer_about"></a>
+      <a href="faq.html" data-i18n="footer_faq"></a>
+      <a href="privacy.html" data-i18n="footer_privacy"></a>
+      <a href="terms.html" data-i18n="footer_terms"></a>
+    </nav>
+  </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/lang.js"></script>
 </body>
 </html>
 
