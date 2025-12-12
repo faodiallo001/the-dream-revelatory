@@ -1,49 +1,105 @@
 {
   "en": {
+    "header_tagline": "Sacred Dream Interpretation",
+
+    "home_title": "Unlock the meaning of your dreams",
+    "home_subtitle": "Ancient symbolic interpretations using timeless wisdom.",
+    "home_cta": "Interpret my dream",
+
     "interpret_title": "Interpret your dream",
     "interpret_subtitle": "Submit your dream with clarity.",
     "name_label": "Your Name (optional)",
+    "name_placeholder": "Your name (optional)",
     "dream_label": "Describe your dream*",
+    "dream_placeholder": "What did you see?",
     "emotion_label": "How did you feel upon waking?*",
+    "emotion_placeholder": "Example: afraid, calm, confused...",
     "context_label": "Context of your life (optional)",
+    "context_placeholder": "Anything that may influence the meaning",
     "privacy_text": "I confirm that I agree to the confidential use of my dream for interpretation.",
     "button_interpret": "Interpret my dream – $3.99",
-    "price_label": "Price"
+    "price_label": "Price",
+
+    "result_title": "Your interpretation",
+    "result_note": "This symbolic interpretation is based on your dream.",
+    "share_button": "Share this interpretation"
   },
 
   "fr": {
+    "header_tagline": "Interprétation sacrée des rêves",
+
+    "home_title": "Déverrouillez le sens de vos rêves",
+    "home_subtitle": "Interprétations symboliques anciennes basées sur une sagesse intemporelle.",
+    "home_cta": "Interpréter mon rêve",
+
     "interpret_title": "Interpréter votre rêve",
     "interpret_subtitle": "Décrivez votre rêve clairement.",
     "name_label": "Votre nom (optionnel)",
+    "name_placeholder": "Votre nom (optionnel)",
     "dream_label": "Décrivez votre rêve*",
+    "dream_placeholder": "Qu'avez-vous vu ?",
     "emotion_label": "Comment vous êtes-vous senti(e) au réveil ?*",
+    "emotion_placeholder": "Exemple : peur, calme, confusion…",
     "context_label": "Contexte de votre vie (optionnel)",
+    "context_placeholder": "Tout élément pouvant influencer le sens",
     "privacy_text": "Je confirme accepter l'utilisation confidentielle de mon rêve pour l'interprétation.",
     "button_interpret": "Interpréter mon rêve – 3,99 $",
-    "price_label": "Prix"
+    "price_label": "Prix",
+
+    "result_title": "Votre interprétation",
+    "result_note": "Cette interprétation symbolique est basée sur votre rêve.",
+    "share_button": "Partager cette interprétation"
   },
 
   "pt": {
+    "header_tagline": "Interpretação Sagrada de Sonhos",
+
+    "home_title": "Desbloqueie o significado dos seus sonhos",
+    "home_subtitle": "Interpretações simbólicas antigas baseadas em sabedoria atemporal.",
+    "home_cta": "Interpretar meu sonho",
+
     "interpret_title": "Interprete o seu sonho",
     "interpret_subtitle": "Descreva seu sonho com clareza.",
     "name_label": "Seu nome (opcional)",
+    "name_placeholder": "Seu nome (opcional)",
     "dream_label": "Descreva seu sonho*",
+    "dream_placeholder": "O que você viu?",
     "emotion_label": "Como você se sentiu ao acordar?*",
+    "emotion_placeholder": "Exemplo: medo, calma, confuso...",
     "context_label": "Contexto da sua vida (opcional)",
+    "context_placeholder": "Qualquer coisa que possa influenciar o significado",
     "privacy_text": "Confirmo que concordo com o uso confidencial do meu sonho para interpretação.",
     "button_interpret": "Interpretar meu sonho – $3.99",
-    "price_label": "Preço"
+    "price_label": "Preço",
+
+    "result_title": "Sua interpretação",
+    "result_note": "Esta interpretação simbólica é baseada no seu sonho.",
+    "share_button": "Compartilhar esta interpretação"
   },
 
   "es": {
+    "header_tagline": "Interpretación Sagrada de los Sueños",
+
+    "home_title": "Desbloquea el significado de tus sueños",
+    "home_subtitle": "Interpretaciones simbólicas antiguas basadas en sabiduría eterna.",
+    "home_cta": "Interpretar mi sueño",
+
     "interpret_title": "Interpreta tu sueño",
     "interpret_subtitle": "Describe tu sueño con claridad.",
     "name_label": "Tu nombre (opcional)",
+    "name_placeholder": "Tu nombre (opcional)",
     "dream_label": "Describe tu sueño*",
+    "dream_placeholder": "¿Qué viste?",
     "emotion_label": "¿Cómo te sentiste al despertar?*",
+    "emotion_placeholder": "Ejemplo: miedo, calma, confusión...",
     "context_label": "Contexto de tu vida (opcional)",
+    "context_placeholder": "Cualquier cosa que pueda influir en el significado",
     "privacy_text": "Confirmo que acepto el uso confidencial de mi sueño para la interpretación.",
     "button_interpret": "Interpretar mi sueño – $3.99",
-    "price_label": "Precio"
+    "price_label": "Precio",
+
+    "result_title": "Tu interpretación",
+    "result_note": "Esta interpretación simbólica se basa en tu sueño.",
+    "share_button": "Compartir esta interpretación"
   }
 }
