@@ -2,12 +2,12 @@
 <html lang="en" class="tdr-body">
 <head>
   <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
-<meta name="theme-color" content="#020617" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#020617" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Dream Interpretation – The Dream Revelator</title>
+  <title data-i18n="result_page_title"></title>
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
@@ -18,7 +18,7 @@
       <div class="tdr-logo-moon"></div>
       <div class="tdr-brand-text">
         <span class="tdr-brand-name">The Dream Revelator</span>
-        <span class="tdr-brand-tagline">Sacred Dream Interpretation</span>
+        <span class="tdr-brand-tagline" data-i18n="header_tagline"></span>
       </div>
     </a>
   </header>
@@ -28,33 +28,29 @@
     <section class="tdr-section">
 
       <h1 class="tdr-title">
-        <span class="tdr-title-highlight">Your</span> interpretation
+        <span class="tdr-title-highlight" data-i18n="result_title_your"></span>
+        <span data-i18n="result_title_interpretation"></span>
       </h1>
 
-      <p class="tdr-text">
-        This unique interpretation is based on ancient traditional symbolism and crafted
-        specifically from the elements you provided.
-      </p>
+      <p class="tdr-text" data-i18n="result_subtitle"></p>
 
       <div class="tdr-card" id="result-card">
 
         <div class="tdr-card-header">
           <div>
-            <div class="tdr-card-title">Dream Reading</div>
-            <div class="tdr-card-subtitle">Traditional Symbolic Interpretation</div>
+            <div class="tdr-card-title" data-i18n="result_card_title"></div>
+            <div class="tdr-card-subtitle" data-i18n="result_card_subtitle"></div>
           </div>
         </div>
 
         <!-- where the interpretation will appear -->
-        <div id="dream-output" class="tdr-text" style="white-space: pre-line;">
+        <div id="dream-output" class="tdr-text" style="white-space: pre-line;" data-i18n-default="loading_text">
           Loading your interpretation...
         </div>
 
         <br />
 
-        <button class="tdr-btn tdr-btn-primary" id="share-btn">
-          Share this interpretation
-        </button>
+        <button class="tdr-btn tdr-btn-primary" id="share-btn" data-i18n="share_button"></button>
 
       </div>
 
@@ -63,7 +59,9 @@
   </main>
 
   <script src="assets/js/result.js"></script>
+  <script src="assets/js/lang.js"></script>
 
 </body>
 </html>
+
 
