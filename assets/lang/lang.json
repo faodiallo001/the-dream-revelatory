@@ -25,6 +25,8 @@
     "context_placeholder": "Anything that may influence the meaning",
     "privacy_text": "I confirm that I agree to the confidential use of my dream for interpretation.",
     "button_interpret": "Interpret my dream – $3.99",
+    "button_pay_card": "Pay by card – $3.99",
+    "button_pay_pix": "Pay with Pix – R$20",
     "price_label": "Price",
 
     "result_title": "Your interpretation",
@@ -58,6 +60,8 @@
     "context_placeholder": "Tout élément pouvant influencer le sens",
     "privacy_text": "Je confirme accepter l'utilisation confidentielle de mon rêve pour l'interprétation.",
     "button_interpret": "Interpréter mon rêve – 3,99 $",
+    "button_pay_card": "Payer par carte – 3,99 $",
+    "button_pay_pix": "Payer avec Pix – 20 R$",
     "price_label": "Prix",
 
     "result_title": "Votre interprétation",
@@ -91,6 +95,8 @@
     "context_placeholder": "Qualquer coisa que possa influenciar o significado",
     "privacy_text": "Confirmo que concordo com o uso confidencial do meu sonho para interpretação.",
     "button_interpret": "Interpretar meu sonho – $3.99",
+    "button_pay_card": "Pagar com cartão – US$ 3,99",
+    "button_pay_pix": "Pagar com Pix – R$20",
     "price_label": "Preço",
 
     "result_title": "Sua interpretação",
@@ -124,6 +130,8 @@
     "context_placeholder": "Cualquier cosa que pueda influir en el significado",
     "privacy_text": "Confirmo que acepto el uso confidencial de mi sueño para la interpretación.",
     "button_interpret": "Interpretar mi sueño – $3.99",
+    "button_pay_card": "Pagar con tarjeta – $3.99",
+    "button_pay_pix": "Pagar con Pix – R$20",
     "price_label": "Precio",
 
     "result_title": "Tu interpretación",
