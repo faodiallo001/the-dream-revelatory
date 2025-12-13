@@ -6,7 +6,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnPix = document.getElementById("pay-pix");
   const errorEl = document.getElementById("interpret-error");
 
-  if (!form || !btnCard || !btnPix) return;
+  if (!form || !btnCard || !btnPix || !errorEl) return;
+
+  // 🔎 Détection "Brésil" robuste : timezone + langue
+  function isBrazil() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      const lang = (navigator.language || "").toLowerCase();
+
+      // Ex : America/Sao_Paulo, America/Bahia, etc.
+      if (tz.toLowerCase().includes("sao_paulo") || tz.toLowerCase().includes("brazil")) {
+        return true;
+      }
+
+      // Si appareil configuré en pt-BR
+      if (lang.startsWith("pt-br")) return true;
+    } catch (e) {
+      console.warn("Geo detection error:", e);
+    }
+    return false;
+  }
+
+  const userIsBrazil = isBrazil();
+
+  // 🧼 UI : un seul bouton visible selon le pays
+  if (userIsBrazil) {
+    // 🇧🇷 On ne montre que le bouton Pix (qui ouvrira Mercado Pago = Pix + carte)
+    btnPix.style.display = "inline-flex";
+    btnCard.style.display = "none";
+  } else {
+    // 🌍 Hors Brésil : on ne montre que le bouton carte (Stripe)
+    btnCard.style.display = "inline-flex";
+    btnPix.style.display = "none";
+  }
 
   function getFormData() {
     const name = document.getElementById("name")?.value.trim();
@@ -31,11 +63,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =========================
-  // 💳 STRIPE (CARTE)
+  // 💳 STRIPE (CARTE) – hors Brésil
   // =========================
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorEl.textContent = "";
+
+    // Si on est au Brésil, on ne passe pas par Stripe
+    if (userIsBrazil) {
+      return;
+    }
 
     const data = getFormData();
     if (!data) return;
@@ -62,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       window.location.href = result.url;
-
     } catch (err) {
       console.error(err);
       errorEl.textContent =
@@ -73,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =========================
-  // 🇧🇷 PIX (MERCADO PAGO)
+  // 🇧🇷 PIX (MERCADO PAGO) – Brésil
   // =========================
   btnPix.addEventListener("click", async () => {
     errorEl.textContent = "";
@@ -83,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnPix.disabled = true;
     const originalText = btnPix.textContent;
-    btnPix.textContent = "Redirecionando para o Pix...";
+    btnPix.textContent = "Redirecionando para o pagamento...";
 
     try {
       const response = await fetch("/api/create-pix", {
@@ -103,11 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       window.location.href = result.init_point;
-
     } catch (err) {
       console.error(err);
       errorEl.textContent =
-        "Não foi possível iniciar o pagamento Pix. Tente novamente.";
+        "Não foi possível iniciar o pagamento. Tente novamente.";
       btnPix.disabled = false;
       btnPix.textContent = originalText;
     }
