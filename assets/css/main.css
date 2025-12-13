@@ -344,6 +344,35 @@ body.tdr-body {
   filter: brightness(1.15);
 }
 
+/* Bouton secondaire (Pix) – glass premium */
+.tdr-btn-secondary {
+  background: rgba(15, 23, 42, 0.55);
+  color: var(--tdr-text-main);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.2s ease-out, filter 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.tdr-btn-secondary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  border-color: rgba(196, 181, 253, 0.6);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 22px rgba(196,181,253,0.25);
+}
+
+.tdr-btn-secondary:active {
+  transform: translateY(0px);
+}
+
+.tdr-btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(196,181,253,0.25), 0 12px 40px rgba(0,0,0,0.6);
+}
+
+
+
 /* ===========================
    FOOTER
    =========================== */
