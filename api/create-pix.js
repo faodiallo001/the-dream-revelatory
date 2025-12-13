@@ -1,11 +1,12 @@
 // /api/create-pix.js
 
-import mercadopago from "mercadopago";
+import { MercadoPagoConfig, Preference } from "mercadopago";
 import crypto from "crypto";
 import { kv } from "@vercel/kv";
 
-mercadopago.configure({
-  access_token: process.env.MP_ACCESS_TOKEN,
+// Nouveau client Mercado Pago (SDK 2.0)
+const client = new MercadoPagoConfig({
+  accessToken: process.env.MP_ACCESS_TOKEN,
 });
 
 export default async function handler(req, res) {
@@ -21,37 +22,40 @@ export default async function handler(req, res) {
 
   const id = crypto.randomBytes(18).toString("hex");
 
-  // On garde la même logique que Stripe
+  // Sauvegarde KV (3 jours)
   await kv.set(
     `dream:${id}:data`,
     { dream, emotion, context: context || "", name: name || "" },
-    { ex: 259200 } // 3 jours
+    { ex: 259200 }
   );
 
-  const preference = {
-    items: [
-      {
-        title: "Interpretação de sonho personalizada",
-        quantity: 1,
-        currency_id: "BRL",
-        unit_price: 20,
-      },
-    ],
-    payment_methods: {
-      // ❌ on exclut seulement BOLETO
-      excluded_payment_types: [{ id: "ticket" }],
-      installments: 1,
-    },
-    back_urls: {
-      success: `${process.env.SITE_URL}/result.html?id=${id}`,
-      failure: `${process.env.SITE_URL}/interpret.html?error=1`,
-    },
-    auto_return: "approved",
-  };
+  // Création de la préférence de paiement
+  const preference = new Preference(client);
 
-  const response = await mercadopago.preferences.create(preference);
+  const result = await preference.create({
+    body: {
+      items: [
+        {
+          title: "Interpretação de sonho personalizada",
+          quantity: 1,
+          currency_id: "BRL",
+          unit_price: 20,
+        },
+      ],
+      payment_methods: {
+        excluded_payment_types: [{ id: "ticket" }], // Exclure Boleto seulement
+        installments: 1,
+      },
+      back_urls: {
+        success: `${process.env.SITE_URL}/result.html?id=${id}`,
+        failure: `${process.env.SITE_URL}/interpret.html?error=1`,
+      },
+      auto_return: "approved",
+    },
+  });
 
   return res.status(200).json({
-    init_point: response.body.init_point,
+    init_point: result.init_point,
   });
 }
+
