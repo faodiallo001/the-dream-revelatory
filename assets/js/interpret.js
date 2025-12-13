@@ -2,16 +2,13 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("interpret-form");
-  const btn = document.getElementById("interpret-btn");
+  const btnCard = document.getElementById("pay-card");
+  const btnPix = document.getElementById("pay-pix");
   const errorEl = document.getElementById("interpret-error");
 
-  if (!form || !btn) return;
+  if (!form || !btnCard || !btnPix) return;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    errorEl.textContent = "";
-
-    // ✅ Le prénom doit être récupéré ici, au moment du submit
+  function getFormData() {
     const name = document.getElementById("name")?.value.trim();
     const dream = document.getElementById("dream")?.value.trim();
     const emotion = document.getElementById("emotion")?.value.trim();
@@ -19,48 +16,100 @@ document.addEventListener("DOMContentLoaded", () => {
     const privacy = document.getElementById("privacy")?.checked;
 
     if (!dream || !emotion) {
-      errorEl.textContent = "Please describe your dream and your emotion.";
-      return;
+      errorEl.textContent =
+        "Please describe your dream and how you felt.";
+      return null;
     }
 
     if (!privacy) {
-      errorEl.textContent = "Please confirm the confidentiality checkbox.";
-      return;
+      errorEl.textContent =
+        "Please confirm the confidentiality checkbox.";
+      return null;
     }
 
-    btn.disabled = true;
-    const originalText = btn.textContent;
-    btn.textContent = "Redirecting to payment...";
+    return { name, dream, emotion, context };
+  }
+
+  // =========================
+  // 💳 STRIPE (CARTE)
+  // =========================
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.textContent = "";
+
+    const data = getFormData();
+    if (!data) return;
+
+    btnCard.disabled = true;
+    const originalText = btnCard.textContent;
+    btnCard.textContent = "Redirecting to payment...";
 
     try {
       const response = await fetch("/api/create-stripe", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        // ✅ On envoie bien le nom maintenant !
-        body: JSON.stringify({ name, dream, emotion, context }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
-        throw new Error("Server error: " + response.status);
+        throw new Error("Stripe server error");
       }
 
-      const data = await response.json();
-      if (!data.success || !data.url) {
-        throw new Error(data.error || "Stripe session error.");
+      const result = await response.json();
+
+      if (!result.success || !result.url) {
+        throw new Error("Stripe session failed");
       }
 
-      // Redirection vers Stripe Checkout
-      window.location.href = data.url;
+      window.location.href = result.url;
 
     } catch (err) {
       console.error(err);
       errorEl.textContent =
-        "We could not start the payment. Please try again in a moment.";
-      btn.disabled = false;
-      btn.textContent = originalText;
+        "We could not start the card payment. Please try again.";
+      btnCard.disabled = false;
+      btnCard.textContent = originalText;
+    }
+  });
+
+  // =========================
+  // 🇧🇷 PIX (MERCADO PAGO)
+  // =========================
+  btnPix.addEventListener("click", async () => {
+    errorEl.textContent = "";
+
+    const data = getFormData();
+    if (!data) return;
+
+    btnPix.disabled = true;
+    const originalText = btnPix.textContent;
+    btnPix.textContent = "Redirecionando para o Pix...";
+
+    try {
+      const response = await fetch("/api/create-pix", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Pix server error");
+      }
+
+      const result = await response.json();
+
+      if (!result.init_point) {
+        throw new Error("Pix init point missing");
+      }
+
+      window.location.href = result.init_point;
+
+    } catch (err) {
+      console.error(err);
+      errorEl.textContent =
+        "Não foi possível iniciar o pagamento Pix. Tente novamente.";
+      btnPix.disabled = false;
+      btnPix.textContent = originalText;
     }
   });
 });
